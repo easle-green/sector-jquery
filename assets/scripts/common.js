@@ -1,162 +1,166 @@
 $(document).ready(function() {
 
-    // buttons animation
-    $('#play').css({backgroundSize: "cover"});
+  // buttons animation
+  $('#play').css({
+    backgroundSize: "cover"
+  });
 
 
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-        $('body').addClass('is_mobile');
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    $('body').addClass('is_mobile');
+  }
+
+  // плеер
+  var current = $('.player__bitrate-active > .player__bitrate-name'),
+    current = {
+      channel: current.data('channel'),
+      source: current.attr('rel')
+    };
+
+  window.currentVolume = .75;
+
+  initPlayer(current.channel, current.source);
+
+  volumeSlider({
+    container: $('#volume .equalizer__container-line'),
+    point: $('#volume .equalizer__container-point'),
+    tooltip: $('#volume .player__volume-size'),
+    fill: $('#volume .equalizer__container-bg'),
+    callback: function(volume) {
+      window.currentVolume = volume / 100;
+      changeVolume(volume);
+    }
+  });
+
+  $('#play')
+    .click(function() {
+      if (!$(this).hasClass('pause')) {
+        buttonPlay(true);
+        $("#jplayer").jPlayer('play');
+      } else {
+        buttonPlay(false);
+        $("#jplayer").jPlayer('stop');
+      }
+      updateStatus();
+    });
+
+  // изменение текущего трека
+  updateStatus();
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  setInterval(function() {
+    updateStatus();
+  }, 3000);
+
+  // изменение битрейта
+  $('#player-bitrate .player__bitrate-name').click(function() {
+    if ($(this).parent().hasClass('.player__bitrate-active')) {
+      return;
     }
 
-    // плеер
-    var current = $('.player__bitrate-active > .player__bitrate-name'),
-        current = {
-            channel: current.data('channel'),
-            source: current.attr('rel')
-        };
+    var bitrate = $('#player-bitrate'),
+      active = bitrate.find('.player__bitrate-active'),
+      value = parseInt($(this).prop('rel')),
+      channel = $(this).data('channel'),
+      current_value = parseInt(active.children('a').prop('rel')),
+      //percent = parseInt($(this).data('color')),
+      player = $("#jplayer"),
+      play = $('#play'),
+      played = play.hasClass('pause');
 
-    window.currentVolume = .75;
+    animateBitrate($('#equalizer .' + current_value + 'k'), value, (
+      current_value < value ? 'up' : 'down'));
+    active.removeClass('player__bitrate-active');
+    $(this).parent().addClass('player__bitrate-active');
+    //changeColor(lighten($default_color, percent));
 
-    initPlayer(current.channel, current.source);
+    if (played) {
+      player.jPlayer("stop");
+      play.removeClass('pause');
+    }
 
-    volumeSlider({
-        container: $('#volume .equalizer__container-line'),
-        point: $('#volume .equalizer__container-point'),
-        tooltip: $('#volume .player__volume-size'),
-        fill: $('#volume .equalizer__container-bg'),
-        callback: function(volume) {
-            window.currentVolume = volume/100;
-            changeVolume(volume);
-        }
-    });
+    player.jPlayer("destroy");
+    initPlayer(channel, value);
 
-    $('#play')
-        .click(function() {
-            if(!$(this).hasClass('pause')) {
-                buttonPlay(true);
-                $("#jplayer").jPlayer('play');
-            } else {
-                buttonPlay(false);
-                $("#jplayer").jPlayer('stop');
-            }
-            updateStatus();
-        });
+    if (played) {
+      setTimeout(function() {
+        play.addClass('pause');
+        $("#jplayer").jPlayer('play');
+      }, 250)
+    }
+  });
 
-    // изменение текущего трека
-    updateStatus();
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    setInterval(function() {
-        updateStatus();
-    }, 3000);
+  // скроллинг
+  /*
+  $('#history-block')
+      .height($(window).height())
+      .mCustomScrollbar({
+          mouseWheelPixels: 1000,
+          scrollButtons:{
+              enable: true
+          },
+          advanced:{
+              updateOnBrowserResize: true,
+              updateOnContentResize: true,
+              normalizeMouseWheelDelta: true
+          },
+          contentTouchScroll: true
+      });
+  */
 
-    // изменение битрейта
-    $('#player-bitrate .player__bitrate-name').click(function(){
-        if($(this).parent().hasClass('.player__bitrate-active')) {
-            return;
-        }
+  $('#tabs .menu__list-item').click(function() {
+    if ($(this).hasClass('active')) {
+      return;
+    }
+    var index = $(this).index();
+    $('#tabs .menu__list-item.active').removeClass('active');
+    $(this).addClass('active');
 
-        var bitrate = $('#player-bitrate'),
-            active = bitrate.find('.player__bitrate-active'),
-            value = parseInt($(this).prop('rel')),
-            channel = $(this).data('channel'),
-            current_value = parseInt(active.children('a').prop('rel')),
-            //percent = parseInt($(this).data('color')),
-            player = $("#jplayer"),
-            play = $('#play'),
-            played = play.hasClass('pause');
+    $('#tabs_content > .active')
+      .removeClass('active')
+      .slideUp();
 
-        animateBitrate($('#equalizer .' + current_value + 'k'), value, (current_value<value ? 'up' : 'down'));
-        active.removeClass('player__bitrate-active');
-        $(this).parent().addClass('player__bitrate-active');
-        //changeColor(lighten($default_color, percent));
-
-        if(played) {
-            player.jPlayer("stop");
-            play.removeClass('pause');
-        }
-
-        player.jPlayer("destroy");
-        initPlayer(channel, value);
-
-        if(played) {
-            setTimeout(function(){
-                play.addClass('pause');
-                $("#jplayer").jPlayer('play');
-            }, 250)
-        }
-    });
-
-    // скроллинг
-    /*
-    $('#history-block')
-        .height($(window).height())
-        .mCustomScrollbar({
-            mouseWheelPixels: 1000,
-            scrollButtons:{
-                enable: true
-            },
-            advanced:{
-                updateOnBrowserResize: true,
-                updateOnContentResize: true,
-                normalizeMouseWheelDelta: true
-            },
-            contentTouchScroll: true
-        });
-    */
-
-    $('#tabs .menu__list-item').click(function(){
-        if ($(this).hasClass('active')) {
-           return;
-        }
-        var index = $(this).index();
-        $('#tabs .menu__list-item.active').removeClass('active');
-        $(this).addClass('active');
-
-        $('#tabs_content > .active')
-            .removeClass('active')
-            .slideUp();
-
-        $( $('#tabs_content > div')[index] )
-            .addClass('active')
-            .slideDown();
-    });
+    $($('#tabs_content > div')[index])
+      .addClass('active')
+      .slideDown();
+  });
 
 
-    $(window).bind('resize', function() {
-        $('body').css('width', $(document).width());
-    });
+  $(window).bind('resize', function() {
+    $('body').css('width', $(document).width());
+  });
 
 });
 
 animateBitrate = function(curr, rate, dir) {
-    var up = (dir === 'up'),
-        left = (up ? 0 : '-20px' ),
-        next;
+  var up = (dir === 'up'),
+    left = (up ? 0 : '-20px'),
+    next;
 
-    if (dir === 'up') {
-        next = curr.next();
-    } else {
-        next = curr.prev();
-    }
+  if (dir === 'up') {
+    next = curr.next();
+  } else {
+    next = curr.prev();
+  }
 
-    if (!up) {
-        curr.addClass('disabled');
+  if (!up) {
+    curr.addClass('disabled');
+  }
+  curr.find('div:first > b').stop().animate({
+    left: left
+  }, 100);
+  curr.find('div:last').stop().animate({
+    left: left
+  }, 100, function() {
+    if (up) {
+      curr.removeClass('disabled');
     }
-    curr.find('div:first > b').stop().animate({
-        left: left
-    }, 100);
-    curr.find('div:last').stop().animate({
-        left: left
-    }, 100, function() {
-        if (up) {
-            curr.removeClass('disabled');
-        }
-        if (!curr.hasClass(rate+'k') && !(!up && curr.prev().hasClass(rate+'k'))) {
-            animateBitrate(next, rate, dir);
-        }// else {
-        //   changeBitrate(up);
-        //}
-    });
+    if (!curr.hasClass(rate + 'k') && !(!up && curr.prev().hasClass(rate +
+        'k'))) {
+      animateBitrate(next, rate, dir);
+    } // else {
+    //   changeBitrate(up);
+    //}
+  });
 
 };
 
@@ -178,21 +182,21 @@ animateBitrate = function(curr, rate, dir) {
 }*/
 
 initPlayer = function(channel, ices) {
-    $("#jplayer").jPlayer({
-        volume: window.currentVolume,
-        ready: function () {
-            $(this).jPlayer("setMedia", {
-                oga: "http://89.223.45.5:8000/" + channel + "-" + ices
-            });
-            // ready callback
-        },
-        swfPath: "images",
-        supplied: "oga"
-    });
+  $("#jplayer").jPlayer({
+    volume: window.currentVolume,
+    ready: function() {
+      $(this).jPlayer("setMedia", {
+        oga: "http://89.223.45.5:8000/" + channel + "-" + ices
+      });
+      // ready callback
+    },
+    swfPath: "images",
+    supplied: "oga"
+  });
 };
 
 changeVolume = function(volume) {
-    $("#jplayer").jPlayer("option", "volume", window.currentVolume);
+  $("#jplayer").jPlayer("option", "volume", window.currentVolume);
 };
 
 /*
@@ -232,33 +236,33 @@ lighten = function (color, light) {
 */
 
 updateStatus = function() {
-    $.get(
-        '/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-        function(data) {
-            $('#track-loader').html(data);
-            //player.checkTrack();
-        }
-    )
+  $.get(
+    '/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
+    function(data) {
+      $('#track-loader').html(data);
+      //player.checkTrack();
+    }
+  )
 };
 
 buttonPlay = function($play) {
-    $('#play').stop().animate({
-        width: '70px',
-        height: '70px',
-        top: '5px',
-        left: '5px'
-    }, 50, function() {
-        if($play)
-            $(this).addClass('pause');
-        else
-            $(this).removeClass('pause');
-        $(this).stop().animate({
-            width: '80px',
-            height: '80px',
-            top: 0,
-            left: 0
-        }, 70, 'easeOutCirc');
-    });
+  $('#play').stop().animate({
+    width: '70px',
+    height: '70px',
+    top: '5px',
+    left: '5px'
+  }, 50, function() {
+    if ($play)
+      $(this).addClass('pause');
+    else
+      $(this).removeClass('pause');
+    $(this).stop().animate({
+      width: '80px',
+      height: '80px',
+      top: 0,
+      left: 0
+    }, 70, 'easeOutCirc');
+  });
 };
 
 
@@ -310,3 +314,65 @@ function HsvToRgb(h, s, v) {
     return {r:red,g:green,b:blue};
 }
 */
+
+var now = new Date();
+console.log(+now);
+
+function progressBar() {
+  var timeData = getPlaytime();
+
+  function getPlaytime() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'playtime.json', false);
+    xhr.send();
+    if (xhr.status != 200) {
+      console.log(xhr.status + ':' + xhr.statusText);
+    } else {
+      data = JSON.parse(xhr.responseText);
+      return data;
+    }
+  }
+
+  function rendering(startTimeServer, length) {
+    var now = new Date();
+    var currentTime = now - startTimeServer;
+    var progress = currentTime / (length * 1000);
+
+    var cns = document.getElementById('progress-bar');
+    var ctx = cns.getContext('2d');
+
+    ctx.save();
+    ctx.clearRect(0, 0, 140, 140);
+    ctx.translate(70, 70);
+    ctx.rotate(-Math.PI / 2);
+    ctx.lineWidth = 32;
+    ctx.lineCap = "round";
+
+    writeTime(ctx);
+
+    cns.style.position = "absolute";
+    cns.style.top = "50px";
+    cns.style.left = "50%";
+    cns.style.marginLeft = "-70px";
+
+    function writeTime(ctx) {
+      ctx.strokeStyle = 'rgba(0,0,0,.5)';
+      ctx.beginPath();
+      partialCircle(ctx, 0, 0, 54);
+      ctx.scale(1, 1);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function partialCircle(ctx, x, y, rad) {
+      ctx.arc(x, y, rad, 0, progress * (Math.PI * 2), false);
+      return ctx;
+    }
+  }
+
+  setInterval(function() {
+    rendering(timeData.serverTime, timeData.length);
+  }, 66);
+}
+
+progressBar();
