@@ -26,7 +26,7 @@
         <?php include('partials/channels-sidebar.html'); ?>
       </div>
       <div class="history-block">
-        <?php include('history.php'); ?>
+        <?php @include('history.php'); ?>
       </div>
     </nav>
 
@@ -44,13 +44,15 @@
               <div class="col-md-6 col-sm-12 col-xs-12 col-lg-8">
 
                 <div class="col-md-16 col-sm-24 col-xs-24 col-lg-19 player__block text-center" id="player">
+                  <!-- TODO This markup causes html grid broken. Append canvas from progressbar.js -->
                   <canvas id="progress-bar" width="140" height="140"></canvas>
                   <div class="player__round">
                     <div id="jplayer" class="hidden"></div>
                     <a class="play" id="play" href="javascript:void(0)"></a>
                   </div>
                   <div class="player__track" id="track-loader" data-channel="progressive">
-                    <?php echo implode("", file('nowplaying-progressive.txt')); ?>
+                    <div class="title player__title"></div>
+                    <div class="trackname player__trackname"></div>
                   </div>
                 </div>
 
@@ -127,6 +129,7 @@
 <script src="assets/scripts/vendor/sidebarEffects.js"></script>
 <script src="assets/scripts/PPSlider.js"></script>
 <script src="assets/scripts/common.js?e938c131ea09c283a94b"></script>
+
 <script src="assets/scripts/progressbar.js"></script>
 <script src="assets/scripts/programActive.js"></script>
 

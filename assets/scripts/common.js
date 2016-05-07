@@ -1,3 +1,5 @@
+var SECTOR = SECTOR || {};
+
 $(document).ready(function() {
 
   // buttons animation
@@ -236,13 +238,17 @@ lighten = function (color, light) {
 */
 
 updateStatus = function() {
-  $.get(
-    '/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-    function(data) {
-      $('#track-loader').html(data);
-      //player.checkTrack();
-    }
-  )
+    var track = document.getElementById('track-loader');
+    // TODO Use XMLHttpRequest for this.
+    // Do not copy-paste from progressbar.js for new module, make only one xhr function for both
+    $.get(
+        //'/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
+        '/track.json?' + Date.now(),
+        function(info) {
+            track.querySelector('.player__title').innerText = info.artist;
+            track.querySelector('.player__trackname').innerText = info.title;
+        }
+    )
 };
 
 buttonPlay = function($play) {
