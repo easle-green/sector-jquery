@@ -43,15 +43,7 @@ $(document).ready(function() {
         buttonPlay(false);
         $("#jplayer").jPlayer('stop');
       }
-      updateStatus();
     });
-
-  // изменение текущего трека
-  updateStatus();
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  setInterval(function() {
-    updateStatus();
-  }, 3000);
 
   // изменение битрейта
   $('#player-bitrate .player__bitrate-name').click(function() {
@@ -131,6 +123,16 @@ $(document).ready(function() {
     $('body').css('width', $(document).width());
   });
 
+    var stContainer = document.getElementById('st-content'),
+        bgDelta = 5;
+
+    stContainer.onscroll = function(event) {
+        if ( this.scrollTop > 500 ) {
+            return;
+        }
+        this.style.backgroundPosition = '50% ' + (-this.scrollTop/bgDelta) + 'px';
+    }
+
 });
 
 animateBitrate = function(curr, rate, dir) {
@@ -192,7 +194,7 @@ initPlayer = function(channel, ices) {
       });
       // ready callback
     },
-    swfPath: "images",
+    swfPath: "assets",
     supplied: "oga"
   });
 };
@@ -236,20 +238,6 @@ lighten = function (color, light) {
     return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
 }
 */
-
-updateStatus = function() {
-    var track = document.getElementById('track-loader');
-    // TODO Use XMLHttpRequest for this.
-    // Do not copy-paste from progressbar.js for new module, make only one xhr function for both
-    $.get(
-        //'/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-        '/track.json?' + Date.now(),
-        function(info) {
-            track.querySelector('.player__title').innerText = info.artist;
-            track.querySelector('.player__trackname').innerText = info.title;
-        }
-    )
-};
 
 buttonPlay = function($play) {
   $('#play').stop().animate({

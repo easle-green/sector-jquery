@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var $ = global.jQuery,
+  var $ = global.$,
     console = global.console,
     ga = global._gaq;
 
@@ -53,7 +53,7 @@
 
   };
 
-  jQuery('#play').click(function() {
+  $('#play').click(function() {
     window.track_js.event('sector', 'PLAY CLICK',
       'пользователь жмакнул на play');
   });

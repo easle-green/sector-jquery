@@ -12,8 +12,6 @@
   <link href="assets/styles-78e536cb72c380e9f645.css" rel="stylesheet">
   <link href="assets/main-78e536cb72c380e9f645.css" rel="stylesheet">
 
-  <?php include('partials/googol.html'); ?>
-
 </head>
 <body>
 
@@ -30,7 +28,7 @@
       </div>
     </nav>
 
-    <div class="st-content">
+    <div class="st-content" id="st-content">
       <div class="st-content-inner">
 
         <div class="container">
@@ -44,8 +42,6 @@
               <div class="col-md-6 col-sm-12 col-xs-12 col-lg-8">
 
                 <div class="col-md-16 col-sm-24 col-xs-24 col-lg-19 player__block text-center" id="player">
-                  <!-- TODO This markup causes html grid broken. Append canvas from progressbar.js -->
-                  <canvas id="progress-bar" width="140" height="140"></canvas>
                   <div class="player__round">
                     <div id="jplayer" class="hidden"></div>
                     <a class="play" id="play" href="javascript:void(0)"></a>
@@ -123,15 +119,18 @@
 <script src="assets/scripts/vendor/jquery.backgroundSize.js"></script>
 <script src="assets/scripts/vendor/bgpos.js"></script>
 
-<script src="assets/scripts/vendor/jquery.mousewheel.min.js"></script>
-<script src="assets/scripts/vendor/jquery.mCustomScrollbar.min.js"></script>
+<!--<script src="assets/scripts/vendor/jquery.mousewheel.min.js"></script>-->
+<!--<script src="assets/scripts/vendor/jquery.mCustomScrollbar.min.js"></script>-->
 
 <script src="assets/scripts/vendor/sidebarEffects.js"></script>
 <script src="assets/scripts/PPSlider.js"></script>
-<script src="assets/scripts/common.js?e938c131ea09c283a94b"></script>
+<script src="assets/scripts/common.js?78e536cba72c380e9f645"></script>
 
 <script src="assets/scripts/progressbar.js"></script>
-<script src="assets/scripts/programActive.js"></script>
+<script src="assets/scripts/updateStatus.js"></script>
+<!--<script src="assets/scripts/programActive.js"></script>-->
+
+<?php include('partials/googol.html'); ?>
 
 </body>
 </html>
