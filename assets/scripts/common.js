@@ -46,9 +46,9 @@ $(document).ready(function() {
       updateStatus();
     });
 
-  // изменение текущего трека
+  // Use module for this and retrieve track info from API url http://sectorradio.ru/api/track.php?channel=<current_channel>
+  // Current channel you can find in #track-loader data-attributes
   updateStatus();
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   setInterval(function() {
     updateStatus();
   }, 3000);

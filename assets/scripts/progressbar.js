@@ -3,14 +3,22 @@
 
     var progress = {
 
+        /*  Use api instead of playtime.json, where:
+            timestamp - current server timestamp, unixtime (note that js need 1000 multiplier)
+            serverTime - server time when track was started playing, unixtime
+         */
+        //apiPoint: 'http://sectorradio.ru/api/track.php',
+
         timer: {},
-        url: '/playtime.json',
+        url: 'playtime.json',
 
         init: function () {
             this.url += '?' + Date.now();
 
+            // move to new func
             this.getPlaytime( function(data) {
                 this.timer = data;
+                // make calculations using json serverTime and timestamp there
                 this.startRender();
             });
 
@@ -25,7 +33,6 @@
         },
 
 
-        // TODO use fetch with polyfill for this
         getPlaytime: function (callback) {
             var xhr = new XMLHttpRequest(),
                 data;
@@ -33,16 +40,18 @@
             function xhrReady() {
                 if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
                     data = JSON.parse(xhr.responseText);
+                    // for local debug, you can delete it
                     //data = {
                     //    "serverTime": Date.now(),
                     //    "length": "60"
                     //};
+
                     callback.bind(this)(data);
                 }
             }
 
             xhr.onreadystatechange = xhrReady.bind(this);
-            xhr.open("GET", 'playtime.json', true); // async
+            xhr.open("GET", this.url, true); // async
             xhr.send();
 
         },
@@ -50,6 +59,7 @@
 
         renderBar: function () {
             var now = new Date();
+            // make calculations using server played time and local timings
             var currentTime = now - this.timer.serverTime;
             var progress = currentTime / (this.timer.length * 1000);
 
@@ -65,6 +75,9 @@
 
             writeTime(ctx);
 
+            // 1. no reason to apply styles forever while renderBar calls
+            // 2. append canvas element from javascript
+            // 3. move to
             cns.style.position = "absolute";
             cns.style.top = "50px";
             cns.style.left = "50%";
