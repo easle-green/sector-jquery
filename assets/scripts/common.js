@@ -43,15 +43,9 @@ $(document).ready(function() {
         buttonPlay(false);
         $("#jplayer").jPlayer('stop');
       }
-      updateStatus();
     });
 
-  // Use module for this and retrieve track info from API url http://sectorradio.ru/api/track.php?channel=<current_channel>
-  // Current channel you can find in #track-loader data-attributes
-  updateStatus();
-  setInterval(function() {
-    updateStatus();
-  }, 3000);
+
 
   // изменение битрейта
   $('#player-bitrate .player__bitrate-name').click(function() {
@@ -237,19 +231,7 @@ lighten = function (color, light) {
 }
 */
 
-updateStatus = function() {
-    var track = document.getElementById('track-loader');
-    // TODO Use XMLHttpRequest for this.
-    // Do not copy-paste from progressbar.js for new module, make only one xhr function for both
-    $.get(
-        //'/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-        '/track.json?' + Date.now(),
-        function(info) {
-            track.querySelector('.player__title').innerText = info.artist;
-            track.querySelector('.player__trackname').innerText = info.title;
-        }
-    )
-};
+
 
 buttonPlay = function($play) {
   $('#play').stop().animate({
