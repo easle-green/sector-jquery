@@ -11,20 +11,23 @@
 
         timer: {},
         url: 'http://sectorradio.ru/api/track.php',
+        needUpdate: false,
+        updateTimeout: 0,
 
         init: function () {
-            this.url += '?' + Date.now();
             this.addCanvas();
-
-            // move to new func
-            this.getPlaytime( function(data) {
-                this.timer = data;
-                // make calculations using json serverTime and timestamp there
-                this.startRender();
-            });
-
+            this.url += '?' + Date.now();
+            this.getPlaytime();
             return this;
         },
+
+      getPlaytime: function (){
+        this.getData(function(data) {
+          this.timer = data;
+          // make calculations using json serverTime and timestamp there
+          this.startRender();
+        });
+      },
 
       addCanvas: function() {
         var cns = document.createElement('canvas');
@@ -43,25 +46,19 @@
 
 
         startRender: function () {
-            setInterval((function() {
+            this.interval = setInterval((function() {
                 this.renderBar();
             }).bind(this), 66);
         },
 
 
-        getPlaytime: function (callback) {
+        getData: function (callback) {
             var xhr = new XMLHttpRequest(),
                 data;
 
             function xhrReady() {
                 if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
                     data = JSON.parse(xhr.responseText);
-                    // for local debug, you can delete it
-                    //data = {
-                    //    "serverTime": Date.now(),
-                    //    "length": "60"
-                    //};
-
                     callback.bind(this)(data);
                 }
             }
@@ -75,7 +72,6 @@
 
         renderBar: function () {
             var now = new Date();
-            // make calculations using server played time and local timings
             var currentTime = now - this.timer.serverTime * 1000;
             var progress = currentTime / (this.timer.length * 1000);
 
@@ -104,7 +100,22 @@
                 ctx.arc(x, y, rad, 0, progress * (Math.PI * 2), false);
                 return ctx;
             }
-        }
+
+            if (progress > 1) {
+              clearInterval(this.interval);
+              this.updatePlaytime(this.updateTimeout);
+            } else {
+              this.updateTimeout = 0;
+            }
+        },
+
+      updatePlaytime: function (time) {
+        setInterval((function () {
+          this.getPlaytime();
+        }).bind(this), time);
+        
+        this.updateTimeout = 3000;
+      }
 
     };
 
