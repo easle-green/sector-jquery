@@ -33,6 +33,7 @@ SECTOR.updateState = {
         if(timeTillTrackEnd<0){
             timeTillTrackEnd = 3000;
         }
+            setTimeout(SECTOR.requestHandler.updateResponse, timeTillTrackEnd - 1000);
             setTimeout(self.handleResponse.bind(self), timeTillTrackEnd);
         })
     },

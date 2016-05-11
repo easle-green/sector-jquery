@@ -27,6 +27,4 @@
   }
 };
 
-setInterval(SECTOR.requestHandler.updateResponse, 5000);
-
 })(window.SECTOR);
