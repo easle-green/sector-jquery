@@ -1,8 +1,6 @@
 ;
 (function() {
   'use strict';
-  var now = new Date();
-  console.log(+now);
 
   var timeData = getPlaytime();
 
@@ -18,6 +16,7 @@
       return data;
     }
   }
+
 
   function rendering(startTimeServer, length) {
     var now = new Date();
@@ -35,7 +34,7 @@
     ctx.lineCap = "round";
 
     writeTime(ctx);
-
+    
     cns.style.position = "absolute";
     cns.style.top = "50px";
     cns.style.left = "50%";
