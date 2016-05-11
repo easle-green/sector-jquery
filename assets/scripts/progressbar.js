@@ -1,61 +1,114 @@
-;
-(function() {
-  'use strict';
+(function (SECTOR) {
+    'use strict';
 
-  var timeData = getPlaytime();
+    var progress = {
 
-  function getPlaytime() {
-    var data;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'playtime.json', false);
-    xhr.send();
-    if (xhr.status != 200) {
-      console.log(xhr.status + ':' + xhr.statusText);
-    } else {
-      data = JSON.parse(xhr.responseText);
-      return data;
-    }
-  }
+        /*  Use api instead of playtime.json, where:
+            timestamp - current server timestamp, unixtime (note that js need 1000 multiplier)
+            serverTime - server time when track was started playing, unixtime
+         */
+        //apiPoint: 'http://sectorradio.ru/api/track.php',
+
+        timer: {},
+        url: 'http://sectorradio.ru/api/track.php',
+
+        init: function () {
+            this.url += '?' + Date.now();
+            this.addCanvas();
+
+            // move to new func
+            this.getPlaytime( function(data) {
+                this.timer = data;
+                // make calculations using json serverTime and timestamp there
+                this.startRender();
+            });
+
+            return this;
+        },
+
+      addCanvas: function() {
+        var cns = document.createElement('canvas');
+        var container = document.getElementById('player');
+
+        container.insertBefore(cns, container.firstChild);
+
+        cns.id = 'progress-bar';
+        cns.height = '140';
+        cns.width = '140';
+        cns.style.position = "absolute";
+        cns.style.top = "50px";
+        cns.style.left = "50%";
+        cns.style.marginLeft = "-70px";
+      },
 
 
-  function rendering(startTimeServer, length) {
-    var now = new Date();
-    var currentTime = now - startTimeServer;
-    var progress = currentTime / (length * 1000);
+        startRender: function () {
+            setInterval((function() {
+                this.renderBar();
+            }).bind(this), 66);
+        },
 
-    var cns = document.getElementById('progress-bar');
-    var ctx = cns.getContext('2d');
 
-    ctx.save();
-    ctx.clearRect(0, 0, 140, 140);
-    ctx.translate(70, 70);
-    ctx.rotate(-Math.PI / 2);
-    ctx.lineWidth = 32;
-    ctx.lineCap = "round";
+        getPlaytime: function (callback) {
+            var xhr = new XMLHttpRequest(),
+                data;
 
-    writeTime(ctx);
-    
-    cns.style.position = "absolute";
-    cns.style.top = "50px";
-    cns.style.left = "50%";
-    cns.style.marginLeft = "-70px";
+            function xhrReady() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
+                    data = JSON.parse(xhr.responseText);
+                    // for local debug, you can delete it
+                    //data = {
+                    //    "serverTime": Date.now(),
+                    //    "length": "60"
+                    //};
 
-    function writeTime(ctx) {
-      ctx.strokeStyle = 'rgba(0,0,0,.5)';
-      ctx.beginPath();
-      partialCircle(ctx, 0, 0, 54);
-      ctx.scale(1, 1);
-      ctx.stroke();
-      ctx.restore();
-    }
+                    callback.bind(this)(data);
+                }
+            }
 
-    function partialCircle(ctx, x, y, rad) {
-      ctx.arc(x, y, rad, 0, progress * (Math.PI * 2), false);
-      return ctx;
-    }
-  }
+            xhr.onreadystatechange = xhrReady.bind(this);
+            xhr.open("GET", this.url, true); // async
+            xhr.send();
 
-  setInterval(function() {
-    rendering(timeData.serverTime, timeData.length);
-  }, 66);
-})();
+        },
+
+
+        renderBar: function () {
+            var now = new Date();
+            // make calculations using server played time and local timings
+            var currentTime = now - this.timer.serverTime * 1000;
+            var progress = currentTime / (this.timer.length * 1000);
+
+            var cns = document.getElementById('progress-bar');
+            var ctx = cns.getContext('2d');
+
+            ctx.save();
+            ctx.clearRect(0, 0, 140, 140);
+            ctx.translate(70, 70);
+            ctx.rotate(-Math.PI / 2);
+            ctx.lineWidth = 11;
+            ctx.lineCap = "round";
+
+            writeTime(ctx);
+
+            function writeTime(ctx) {
+                ctx.strokeStyle = 'rgba(255, 255, 255, .55)';
+                ctx.beginPath();
+                partialCircle(ctx, 0, 0, 54);
+                ctx.scale(1, 1);
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            function partialCircle(ctx, x, y, rad) {
+                ctx.arc(x, y, rad, 0, progress * (Math.PI * 2), false);
+                return ctx;
+            }
+        }
+
+    };
+
+    // TODO make module updateStatus from common.js and request nowplaying only when timer is ready
+    SECTOR.progress = progress.init();
+
+})(window.SECTOR);

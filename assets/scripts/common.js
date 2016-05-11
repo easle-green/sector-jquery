@@ -1,3 +1,5 @@
+var SECTOR = SECTOR || {};
+
 $(document).ready(function() {
 
   // buttons animation
@@ -41,15 +43,9 @@ $(document).ready(function() {
         buttonPlay(false);
         $("#jplayer").jPlayer('stop');
       }
-      updateStatus();
     });
 
-  // изменение текущего трека
-  updateStatus();
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  setInterval(function() {
-    updateStatus();
-  }, 3000);
+
 
   // изменение битрейта
   $('#player-bitrate .player__bitrate-name').click(function() {
@@ -235,15 +231,7 @@ lighten = function (color, light) {
 }
 */
 
-updateStatus = function() {
-  $.get(
-    '/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-    function(data) {
-      $('#track-loader').html(data);
-      //player.checkTrack();
-    }
-  )
-};
+
 
 buttonPlay = function($play) {
   $('#play').stop().animate({

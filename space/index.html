@@ -26,7 +26,7 @@
         <?php include('../partials/channels-sidebar.html'); ?>
       </div>
       <div class="history-block">
-        <?php include('../../history.php'); ?>
+        <?php @include('../../history.php'); ?>
       </div>
     </nav>
 
@@ -49,7 +49,8 @@
                     <a class="play" id="play" href="javascript:void(0)"></a>
                   </div>
                   <div class="player__track" id="track-loader" data-channel="space">
-                    <?php echo implode("", file('../nowplaying-space.txt')); ?>
+                    <div class="title player__title"></div>
+                    <div class="trackname player__trackname"></div>
                   </div>
                 </div>
 
@@ -126,6 +127,9 @@
 <script src="../assets/scripts/vendor/sidebarEffects.js"></script>
 <script src="../assets/scripts/PPSlider.js"></script>
 <script src="../assets/scripts/common.js?e938c131ea09c283a94b"></script>
+
+<script src="assets/scripts/progressbar.js"></script>
+<script src="assets/scripts/programActive.js"></script>
 
 </body>
 </html>
