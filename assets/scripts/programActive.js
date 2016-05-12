@@ -7,7 +7,15 @@ window.programActive = {
 
   init: function () {
     this.setBreakpoints();
-    this.setUpdateInterval(0);
+    this.getServerTime(0);
+  },
+
+  getServerTime: function (time) {
+    SECTOR.progress.apiPromise
+      .then((function (data) {
+        this.time.now = new Date(data.timestamp*1000);
+        this.setUpdateInterval(time);
+      }).bind(this));
   },
 
   setBreakpoints: function () {
@@ -17,7 +25,7 @@ window.programActive = {
   },
 
   getBreakpoint: function () {
-    if (this.time.moscowHours % 2) {
+    if (this.time.hours % 2) {
       this.nextBreakpointIn = (60 - this.time.seconds) * 1000 + (119 - this.time.minutes) * 60 * 1000;
     } else {
       this.nextBreakpointIn = (60 - this.time.seconds) * 1000 + (59 - this.time.minutes) * 60 * 1000;
@@ -25,24 +33,25 @@ window.programActive = {
   },
 
   getTime: function () {
-    this.time.now = new Date();
+    // this.getServerTime();
+    // console.log(programActive.time);
+
     this.time.hours = this.time.now.getHours();
     this.time.minutes = this.time.now.getMinutes();
     this.time.seconds = this.time.now.getSeconds();
-    this.time.timezone = this.time.now.getTimezoneOffset();
-    this.time.moscowHours = this.time.hours + (this.time.timezone + 180) / 60;
   },
 
   getActiveRow: function () {
-    if (this.time.moscowHours % 2) {
-      this.activeRow = this.breakPoints.indexOf(this.time.moscowHours);
+    if (this.time.hours % 2) {
+      this.activeRow = this.breakPoints.indexOf(this.time.hours);
 
     } else {
-      this.activeRow = this.breakPoints.indexOf(this.time.moscowHours - 1);
+      this.activeRow = this.breakPoints.indexOf(this.time.hours - 1);
     }
   },
 
   setUpdateInterval: function (time) {
+
     setTimeout((function () {
       if (time) {
         this
@@ -60,7 +69,7 @@ window.programActive = {
         .toggle('programs__row-active');
 
       this.getBreakpoint();
-      this.setUpdateInterval(this.nextBreakpointIn);
+      this.getServerTime(this.nextBreakpointIn);
     }).bind(this), time);
   }
 };

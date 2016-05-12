@@ -10,6 +10,7 @@
         //apiPoint: 'http://sectorradio.ru/api/track.php',
 
         timer: {},
+        apiPromise: {},
         url: 'http://sectorradio.ru/api/track.php',
         needUpdate: false,
         updateTimeout: 0,
@@ -20,14 +21,6 @@
             this.getPlaytime();
             return this;
         },
-
-      getPlaytime: function (){
-        this.getData(function(data) {
-          this.timer = data;
-          // make calculations using json serverTime and timestamp there
-          this.startRender();
-        });
-      },
 
       addCanvas: function() {
         var cns = document.createElement('canvas');
@@ -52,21 +45,16 @@
         },
 
 
-        getData: function (callback) {
-            var xhr = new XMLHttpRequest(),
-                data;
-
-            function xhrReady() {
-                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
-                    data = JSON.parse(xhr.responseText);
-                    callback.bind(this)(data);
-                }
-            }
-
-            xhr.onreadystatechange = xhrReady.bind(this);
-            xhr.open("GET", this.url, true); // async
-            xhr.send();
-
+        getPlaytime: function () {
+          this.apiPromise = fetch(this.url)
+            .then(function (response) {
+              return response.json();
+            })
+            .then((function (data) {
+              this.timer = data;
+              this.startRender();
+              return data;
+            }).bind(this));
         },
 
 
@@ -74,7 +62,6 @@
             var now = new Date();
             var currentTime = now - this.timer.serverTime * 1000;
             var progress = currentTime / (this.timer.length * 1000);
-
             var cns = document.getElementById('progress-bar');
             var ctx = cns.getContext('2d');
 

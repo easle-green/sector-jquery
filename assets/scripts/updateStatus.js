@@ -11,7 +11,7 @@ SECTOR.updateState = {
 		xhr.onloadend = function(){
 			if (xhr.readyState === 4 && xhr.status === 200){
 				callback(xhr.response);
-				console.log(xhr.response);
+				// console.log(xhr.response);
 			}
 		};
 			xhr.send();
@@ -34,7 +34,7 @@ SECTOR.updateState = {
 		} else {
 			setTimeout(SECTOR.updateState.handleResponse, timeTillTrackEnd);
 		}
-			console.log('Time till track end: ' + timeTillTrackEnd);
+			// console.log('Time till track end: ' + timeTillTrackEnd);
 		})
 	},
 
