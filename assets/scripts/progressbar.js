@@ -110,10 +110,10 @@
         },
 
       updatePlaytime: function (time) {
-        setInterval((function () {
+        setTimeout((function () {
           this.getPlaytime();
         }).bind(this), time);
-        
+
         this.updateTimeout = 3000;
       }
 

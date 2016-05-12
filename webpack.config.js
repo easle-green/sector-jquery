@@ -4,7 +4,7 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 var webpack = require('webpack');
 
 module.exports = {
-  entry: "./assets/scripts/main",
+  entry: "./assets/scripts/main.js",
   output: {
     path: "./assets/scripts/",
     filename: "build.js"
