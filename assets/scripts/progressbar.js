@@ -51,6 +51,7 @@
               return response.json();
             })
             .then((function (data) {
+              data.timestamp = 1463140795;
               this.timer = data;
               this.startRender();
               return data;
