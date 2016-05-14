@@ -9,19 +9,16 @@
 
         init: function () {
             this.block = document.getElementById(this.byId);
-            this.channel = this.block.dataset.channel;
+
+            SECTOR.api.requestEmitter.addListener('requestReady', this.setTrackHTML.bind(this));
 
             return this;
         },
 
-        updateTrackInfo: function() {
-            this.trackInfo = SECTOR.progress.trackInfo;
-            this.setTrackHTML();
-        },
-
         setTrackHTML: function() {
-            this.block.querySelector(this.byArtist).innerText = this.trackInfo.artist.replace(/'\\/gi, '');
-            this.block.querySelector(this.byTitle).innerText = this.trackInfo.title.replace(/'\\/gi, '');
+            var trackInfo = SECTOR.api.trackInfo;
+            this.block.querySelector(this.byArtist).innerText = trackInfo.artist.replace(/'\\/gi, '');
+            this.block.querySelector(this.byTitle).innerText = trackInfo.title.replace(/'\\/gi, '');
         }
 
     };

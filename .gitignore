@@ -1,6 +1,7 @@
 .DS_Store
 .idea
 npm-debug.log
+list.php
 
 bower_components
 node_modules
