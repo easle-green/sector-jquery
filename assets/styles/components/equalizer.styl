@@ -1,0 +1,94 @@
+@import '../../../css/bootstrap_config.styl'
+
+.equalizer
+  height 250px
+  overflow: hidden
+
+  .colname
+    margin-left 9px
+
+  &__container
+    list-style: none
+    padding: 0
+    display: table
+    width: 100%
+    margin-left: 10px
+    margin-top: 16px
+
+    &,
+    &-element
+      height 152px
+
+    &-element
+      width 6.25%
+      display: table-cell
+      > div,
+      > a
+        overflow: hidden
+        position: relative
+        > b
+          absolute top 0 left 0
+          size 20px 180px
+          /*background-color: $color2*/
+      > div
+        size 20px 20px
+        background-color: $blue
+        display: block
+        margin-bottom: 10px
+        border-radius: 10px
+      > a
+        display: block
+        width: 20px
+        background-color: $blue
+        border-radius: 10px
+        cursor: default
+        transition: all 0.3s ease-in-out
+        position: relative
+      span
+        color: #fff
+        display: block
+        font-size: 11px
+        margin-top: 8px
+        text-align: center
+        width: 20px
+
+      &.disabled
+        > div,
+        > a
+          background-color: rgba(0, 0, 0, 0.4)
+          /*box-shadow: inset -1px 0 3px rgba(0, 0, 0, 0.5)*/
+          > b
+            left: -20px
+        span
+          color: rgba(0, 0, 0, 0.4)
+
+  .size100
+    a
+      height: 90%
+  .size90
+    a
+      height: 80%
+  .size80
+    a
+      height: 70%
+  .size70
+    a
+      height: 60%
+  .size60
+    a
+      height: 50%
+  .size50
+    a
+      height: 40%
+  .size40
+    a
+      height: 30%
+  .size30
+    a
+      height: 20%
+  .size20
+    a
+      height: 10%
+  .size10
+    a
+      height: 1%

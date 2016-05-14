@@ -1,0 +1,31 @@
+@import '../../../css/bootstrap_config.styl'
+
+.player
+
+  &__bitrate
+    padding-left 40px
+
+    &-container
+      font-size: 40px
+      list-style: none
+      padding: 0
+      margin: 97px 0 0
+
+    &-element
+      padding-left: 30px
+      line-height: 45px
+
+    &-active
+      background: url(../../../images/svg/big_arrow.svg) no-repeat 0 12px
+      font-weight: 600
+      > a
+        color: rgba(255, 255, 255, 1)
+        cursor: default
+
+    &-name
+      color: rgba(0, 0, 0, 0.6)
+      transition: color 0.2s ease 0s
+      text-decoration: none
+
+    .colname:last-child
+        margin-top: 3px

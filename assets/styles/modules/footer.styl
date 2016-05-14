@@ -1,0 +1,122 @@
+body
+  &.ge .footer .html5
+    background-position: 54px 1px
+  &.fr .footer .html5
+    background-position: 109px 1px
+
+.footer
+  color: rgba(255, 255, 255, 0.6)
+  font: normal 11px/12px Arial
+
+  a
+    color: rgba(255, 255, 255, 0.6)
+    text-decoration: none
+    &:hover
+      color: rgba(255, 255, 255, 0.9)
+      text-decoration: none
+    &:link
+      &,
+      & > img
+        transition all 0.15s ease
+
+  .columns
+    background $gray
+    padding-top 40px
+    padding-bottom 30px
+
+  &__cell
+    padding 0 35px
+    &:first-child
+      padding-left 15px
+    &:last-child
+      padding-right 0
+
+  &__about
+    text-align: justify
+    strong
+      color: #fff
+    &-last
+      margin-top 30px
+
+  &__image
+    margin-bottom: 15px
+    height 25px
+
+  &__first
+    height 115px
+
+  &__browsers
+    margin-top -11px
+    .footer__image
+      margin-bottom: 26px
+
+  &__creative
+    width 217px
+    display: block
+
+  &__xiph
+    size 342px 25px
+    margin-bottom: 5px
+    opacity: 0.8
+    &:hover
+      opacity: 1
+
+  &__foobar2000
+    opacity: 0.8
+    &:hover
+      opacity: 1
+
+  &__link
+    background-color: $blue
+    border-radius: 8px
+    color: #fff
+    display: inline-block
+    height: 19px
+    line-height: 19px
+    margin: 3px 0 0 30px
+    padding: 0 15px
+    vertical-align: top
+
+  &__html5
+    margin: 8px 0 16px
+
+  &__bordered
+    padding-bottom: 9px
+    img
+      margin-left: 12px
+    a:first-child img
+      margin-left: 0
+      margin-right: 13px
+    > a
+      opacity: 0.8
+      &:hover
+        opacity: 1
+
+  &__yabra
+    width: 133px
+    margin-right: 12px
+    opacity: 0.5
+    &:hover
+      opacity: 1
+
+  .underline
+    text-decoration underline
+
+.google
+  &.columns
+    background-color: #353333
+    padding-top 20px
+    padding-bottom 20px
+  & &__app
+    display: block
+    font: lighter 27px $basefont
+    color: rgba(255,255,255,.3)
+    padding-right: 98px
+    background: url("../images/svg/ico_googleplay.svg") no-repeat center right
+    line-height: 64px
+    text-decoration: none
+    float: right
+    .footer &:hover
+      text-decoration none
+    span
+      color: #fff

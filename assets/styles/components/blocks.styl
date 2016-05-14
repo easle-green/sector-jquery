@@ -1,0 +1,161 @@
+@import '../../../css/bootstrap_config.styl'
+
+.tabs
+  &,
+  > .columns
+    height 575px
+  > .columns
+    padding-left 4%
+    padding-right 4%
+    &.formats
+      padding-right calc(4% - 10px)
+    &.first
+      display none
+
+.formats
+  background-color rgb(90,121,141)
+  padding-bottom 40px
+
+  &.columns
+    padding-right
+
+  &__block
+    padding 50px 20px 0
+    &:first-child
+      padding-left 0
+    &:last-child
+      padding-right 0
+
+  h6
+    background: url(../../../images/svg/icons.svg) no-repeat
+    color: rgba(255,255,255,0.6)
+    font-size: 21px
+    font-weight: normal
+    margin: 0 0 30px
+    padding-left: 56px
+    font: 20px/41px Arial
+    height: 42px
+    line-height: 50px
+
+  .hear
+    background-position: 0 -90px
+  .how
+    background-position: 0 -182px
+  .mp3
+    background-position: 2px -272px
+  .ogg
+    background-position: 0 -360px
+
+  blockquote
+    color: rgba(255, 255, 255, 0.8)
+    border-left 0
+    font-size: 15px
+    line-height: 18px
+    margin: 0 0 30px
+    height: 80px
+    padding 0
+
+  &-descr
+    color: #fff
+    font-size: 16px
+    font-weight: normal
+    line-height: 18px
+    font: 15px/18px Arial
+    text-align: justify
+
+  &-playlist
+    background-color $blue_dark
+    color #fff
+    text-decoration none
+    transition background-color 0.15s ease 0s
+    border-radius: 8px;
+    height: 19px;
+    line-height: 19px;
+    padding: 2px 15px;
+    font-size: 13px
+    &:hover
+      background-color #6690AD
+
+.programs
+  $programs = selector()
+  color rgba(255,255,255,.85)
+  background-color $blue_light
+  font-size 14px
+  line-height 1.2
+  padding: 40px 0 25px
+
+  &.columns
+    padding-right 30px
+
+  &__row
+    float: left;
+    padding: 10px 0.5%;
+    margin: 0 0.1%;
+    width: 7.83%;
+    &-active
+      border 1px dashed rgba(255,255,255, 0.6)
+    &:last-child
+      margin-right 0
+
+  &-days
+    width 3.5%
+    padding-left 0
+    padding-right 0
+    margin-left 0
+    {$programs}-block
+      border none
+      text-align left
+
+  &-head
+    font-weight 900
+    color #fff
+  &-small
+    font-size: 8px;
+    vertical-align: top;
+    padding-top: 3px;
+    display: inline-block;
+    font-weight: 100;
+
+  &-block
+    size 100% 60px
+    display table
+    width: 100%
+    border-bottom: 1px solid rgba(255, 255, 255, .2)
+    overflow hidden
+    text-align center
+    &:first-child
+      height 50px
+    &:first-child
+      border-bottom none
+
+    &--highlighted,
+    &--custom
+      {$programs}-item
+        background-color rgba(255,255,255,0.2)
+
+    &--custom
+      border-bottom none
+      {$programs}-item
+        vertical-align top
+        padding-top 8px
+        position: relative
+        color #fff
+      &-name
+        absolute top 0 left 0
+        size 100% 46px
+        overflow hidden
+        display: table
+      &-title
+        display table-cell
+        vertical-align middle
+      &-descr
+        absolute bottom 0 left 0
+        size 100% 14px
+        line-height 12px
+        font-size 10px
+        background-color $blue_dark
+
+  &-item
+    display table-cell
+    vertical-align middle
+

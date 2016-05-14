@@ -1,0 +1,14 @@
+{
+  "name": "Sector-radio",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap3-stylus": ""
+  },
+  "resolutions": {
+    "angular": "^1.5.x"
+  }
+}

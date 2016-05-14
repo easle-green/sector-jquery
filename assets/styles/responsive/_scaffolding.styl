@@ -1,0 +1,142 @@
+// 320 - 960
+@media screen and (max-width: 600px)
+  .logo
+    &__slogan
+      &-about,
+      &-describe
+        font-size 18px
+
+@media screen and (min-width: 320px) and (max-width: 959px)
+  .header
+    padding-top 35px
+  .lang
+    text-align center
+  .logo
+    &__sector-img
+      margin-left 0
+    &__slogan
+      padding-left 20px
+      width: 100%
+      &-about,
+      &-describe
+        font-size 20px
+    .btn-channels
+      margin 10px auto 0
+      width: 220px
+      font-size 17px
+      text-align center
+      display block
+  .container
+    .player
+      &__volume,
+      &__bitrate .colname
+        display none
+      &__bitrate-container
+        margin-top 75px
+    .equalizer
+      display none
+    .tabs, .tabs > .columns
+      height auto
+    .formats
+      &__block
+        padding-left 0
+        padding-right 0
+      blockquote
+        margin 0 0 -10px
+    .menu
+      display none
+    .formats.columns
+      padding-left 45px
+      padding-right 35px
+  .st-container .st-content
+    background-size: cover
+  .footer
+    &__first
+      height auto
+    &__cell
+      margin-bottom 35px
+      &:first-child
+        padding-left 35px
+    .text-right
+      text-align left
+
+
+// 960 - 1280
+@media screen and (min-width: 960px) and (max-width: 1152px)
+  .logo__slogan
+    padding-left 55px
+  .logo__sector-img
+    margin-left 27px
+  .container .player
+    &__bitrate
+      padding-left 0
+      &-container
+        font-size 37px
+        margin-left -26px
+    .colname
+      margin-left 5px
+    .player__block
+      width: 100%
+  .columns
+    &.formats
+      blockquote
+        font-size 13px
+      h6
+        font-size 18px
+    .formats-descr
+      font 14px/15px Arial
+    &.programs
+      font-size 12px
+  .footer__cell
+    padding 0 10px
+
+
+@media screen and (min-width: 1153px) and (max-width: 1280px)
+  .logo__slogan
+    &-about,
+    &-describe
+      font-size 32px
+
+
+// 1680 - 1900
+@media screen and (min-width: 1681px)
+  .container
+    .header,
+    .player,
+    .menu__list,
+    .tabs > .columns > .row,
+    .footer .columns > .row
+      width 1600px
+      margin: auto
+      float: none
+    .tabs > .columns > .row
+      padding-left 40px
+      padding-right 50px
+    .tabs > .formats.columns > .row
+      padding-left 60px
+      padding-right 45px
+    .footer .columns > .row
+      padding-left 63px
+      padding-right 40px
+    .logo
+      &__sector-img
+        margin-left 98px
+      &__slogan
+        width: 75%
+        padding-left 95px
+        &-about,
+        &-describe
+          font-size: 34px
+    .player
+      &__block
+        margin-left: 0
+        margin-right: 0
+      &__volume
+        padding 0 0 0 25px
+        .colname
+          margin-left: -5px
+    .footer__cell
+      &:first-child
+        padding-left 0
+      &:last-child
+        padding-right 0

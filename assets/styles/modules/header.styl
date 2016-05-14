@@ -1,0 +1,90 @@
+.header
+  padding-top: 75px
+
+.logo
+  color: #fff
+  margin-bottom: 50px
+
+  &__sector
+    &-img
+      display inline-block
+      margin-top: 12px
+      margin-left 63px
+      width 70px
+
+  &__slogan
+    padding-top: 34px
+    padding-left: 70px
+    float: left
+    width: 78%
+    &-about,
+    &-describe
+      font-weight: lighter
+      text-transform: uppercase
+      margin: 0
+      font-size: 32px
+      line-height: 100%
+    &-about
+      padding: 0
+      > span
+        text-transform: none
+    .black
+      color: rgba(0, 0, 0, 0.9)
+
+.lang
+  margin-bottom 20px
+  &__icon
+    cursor default
+    size 30px 30px
+    margin-left: 0
+    margin-right: 7px
+    background-color: rgba(255, 255, 255, 0.18)
+    color rgba(0, 0, 0, 0.18)
+    transition: background 0.2s ease 0s, color 0.2s ease 0s
+    border-radius: 50%
+    position: relative
+    text-align: center
+    z-index: 1
+    display: inline-block
+    font-size: 13px
+    line-height: 29px
+    text-decoration: none
+    &.en
+      &:before
+        content: ""
+    &:after
+      absolute top -4px left -4px
+      size 24px 24px
+      box-shadow: 0 0 0 3px #fff
+      opacity: 0
+      padding: 7px
+      transform: scale(0.8)
+      transition: transform 0.2s ease 0s, opacity 0.2s ease 0s
+      box-sizing: content-box
+      border-radius: 50%
+      content: ""
+      pointer-events: none
+    /*&:hover,*/
+    &.active
+      background-color rgba(255, 255, 255, 1)
+      color: rgba(0, 0, 0, 0.5)
+      text-decoration: none
+      &:after
+        opacity: 1
+        transform: scale(1)
+
+.btn-channels
+  padding 0 30px
+  background rgba(0,0,0,0.5)
+  color #fff
+  text-transform uppercase
+  height 40px
+  line-height 40px
+  font-size: 20px
+  display inline-block
+  border-radius 2px
+  margin 10px 0 0 3px
+  font-weight 600
+  transition background-color 0.15s ease 0s
+  &:hover
+    background rgba(0,0,0,0.7)

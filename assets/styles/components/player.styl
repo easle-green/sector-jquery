@@ -1,0 +1,99 @@
+@import '../../../css/bootstrap_config.styl'
+
+.player
+
+  &__block
+    margin-left: -8px
+    margin-right: 6px
+
+  &__track
+    size 100% 65px
+    margin-top: 11px
+
+  &__round
+    size 140px 140px
+    margin 50px auto 0
+    padding: 30px
+    background-color: rgba(255, 255, 255, 0.4)
+    border-radius: 70px
+    > a
+      size 80px 80px
+      display: block
+      position: relative
+    .play
+      background: url(../../../images/svg/pause.svg) no-repeat
+    .pause
+      background: url(../../../images/svg/play.svg) no-repeat
+
+  &__title,
+  &__trackname
+    white-space: nowrap
+    overflow: hidden
+    width: 100%
+    text-overflow: ellipsis
+
+  &__title
+    font-size: 15px
+    font-weight: bold
+    text-align: center
+    color: #fff
+
+  &__trackname
+    color: rgba(255, 255, 255, 0.9)
+    font-size: 15px
+    line-height: 19px
+    text-align: center
+
+  &__volume
+    &-slider
+      margin-left: 6px
+      &.equalizer
+        width: 40px
+        margin-top: 14px
+    .colname
+      margin-left: -5px
+      margin-bottom: 23px
+
+    &-slider
+      &.equalizer
+        margin-top -7px
+        overflow visible
+
+      .equalizer__container
+        height 185px
+        &:hover
+          .equalizer__container-point:after
+            opacity 1
+        &-element
+          height 190px
+          position: relative
+        &-point
+          absolute top 36px left -2px
+          size 24px
+          background-color #fff
+          z-index 200
+          border-radius 100%
+          overflow visible
+          cursor: pointer
+          &:after
+            absolute top 0 left -30px
+            size 16px 28px
+            background: url(../../../images/svg/big_arrow.svg) no-repeat 0 0
+            display block
+            content: ' '
+            opacity 0
+            transition all 0.2s ease 0s
+          &.moving:after
+            opacity 1
+        &-line
+          height 166px
+          position: relative
+          background-color rgba(0, 0, 0, 0.4)
+        &-bg
+          size 20px 110px
+          absolute bottom 0 left 0
+          background-color $blue
+          border-radius 0 0 10px 10px
+        &-description
+          font-size 15px
+          margin-top: 5px
