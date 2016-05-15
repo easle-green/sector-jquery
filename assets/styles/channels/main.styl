@@ -1,7 +1,7 @@
 .channel-main
 
   .st-content
-    background-image url(../images/backgrounds/background-progressive.png)
+    background-image url(../images/backgrounds/background_progressive.jpg)
 
   .player__volume-slider .equalizer__container-bg,
   .footer__link
@@ -19,12 +19,13 @@
   .programs-block--custom-descr
     background-color $red_dark
 
-  .programs,
-  .formats-playlist
+  .programs
     background-color $red_light
 
-  .formats-playlist:hover
-    background-color #EF8A88
-
-  .programs__row-active
-    border-color #000
+  .formats-playlist
+    color rgba(255,255,255,0.8)
+    &,
+    &:hover
+      background-color #404646
+    &:hover
+      color #fff

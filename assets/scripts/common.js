@@ -1,4 +1,4 @@
-var SECTOR = SECTOR || {};
+window.SECTOR = window.SECTOR || {};
 
 $(document).ready(function() {
 
@@ -22,17 +22,6 @@ $(document).ready(function() {
   window.currentVolume = .75;
 
   initPlayer(current.channel, current.source);
-
-  volumeSlider({
-    container: $('#volume .equalizer__container-line'),
-    point: $('#volume .equalizer__container-point'),
-    tooltip: $('#volume .player__volume-size'),
-    fill: $('#volume .equalizer__container-bg'),
-    callback: function(volume) {
-      window.currentVolume = volume / 100;
-      changeVolume(volume);
-    }
-  });
 
   $('#play')
     .click(function() {

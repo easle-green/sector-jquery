@@ -2,11 +2,10 @@
 
   "use strict";
 
-  var $ = global.$,
-    console = global.console,
-    ga = global._gaq;
+  var console = global.console,
+      ga = global._gaq,
 
-  window.track_js = {
+  track_js = {
 
     submit_status: false,
     debug: true,
@@ -53,9 +52,11 @@
 
   };
 
-  $('#play').click(function() {
-    window.track_js.event('sector', 'PLAY CLICK',
-      'пользователь жмакнул на play');
-  });
+  function playClicked() {
+    track_js.event('sector', 'PLAY CLICK',
+        'пользователь жмакнул на play');
+  }
+
+  document.getElementById('play').addEventListener('click', playClicked.bind(this));
 
 }(this));
