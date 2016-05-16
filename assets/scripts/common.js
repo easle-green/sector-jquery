@@ -1,4 +1,4 @@
-var SECTOR = SECTOR || {};
+window.SECTOR = window.SECTOR || {};
 
 $(document).ready(function() {
 

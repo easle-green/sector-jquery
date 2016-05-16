@@ -73,6 +73,9 @@ window.programActive = {
         .toggle('programs__row-active');
 
       this.getBreakpoint();
+      if (NODE_ENV == 'development') {
+        console.log(this.nextBreakpointIn);
+      }
       this.setUpdateInterval(this.nextBreakpointIn);
     }).bind(this), time);
   }

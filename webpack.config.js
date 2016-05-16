@@ -1,7 +1,7 @@
 'use strict';
 
-var NODE_ENV = process.env.NODE_ENV || 'development';
-var webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const webpack = require('webpack');
 
 module.exports = {
   entry: "./assets/scripts/main.js",
@@ -9,24 +9,26 @@ module.exports = {
     path: "./assets/scripts/",
     filename: "build.js"
   },
-  watch: NODE_ENV === 'development',
+
+  watch: NODE_ENV == "development",
+
   watchOptions: {
     aggregateTimeout: 100
+    // задержка перед сборкой после изменений
   },
-  devtool: NODE_ENV === 'development' ? "source-map" : null,
+
+  devtool: NODE_ENV == 'development' ? "chip-inline-module-source-map" : null,
+
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    }),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(NODE_ENV)
     })
   ],
+
   module: {
-    loaders: [
-      { test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader" }
-    ]
+    loader: [{
+      test: /\.js$/,
+      loader: 'babel?presets[]=es2015'
+    }]
   }
 };
