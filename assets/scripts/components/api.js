@@ -1,8 +1,9 @@
-(function (SECTOR) {
-    'use strict';
+'use strict';
 
-    var api = {
+function api() {
+    var EventEmitter = require('wolfy87-eventemitter');
 
+    return {
         apiPoint: 'http://sectorradio.ru/api/track.php',
         trackId: 'track-loader',
         channel: 'progressive',
@@ -12,6 +13,7 @@
             this.channel = document.getElementById(this.trackId).dataset.channel || this.channel;
             this.requestEmitter = new EventEmitter();
             this.update();
+
             return this;
         },
 
@@ -19,7 +21,7 @@
             this.url = this.apiPoint + '?channel=' + this.channel + '&rnd=' + Date.now();
 
             var xhr = new XMLHttpRequest(),
-                data;
+              data;
 
             function xhrReady() {
                 if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
@@ -49,10 +51,10 @@
             this.requestEmitter.emitEvent('requestReady');
 
             var now = Date.now(),
-                diff = ( now - this.trackInfo.timeLocal )/1000,
-                currentProgress = ( diff + this.trackInfo.serverPlayed ) / this.trackInfo.length,
-                timeLeft = this.trackInfo.length - this.trackInfo.serverPlayed,
-                timer;
+              diff = ( now - this.trackInfo.timeLocal )/1000,
+              currentProgress = ( diff + this.trackInfo.serverPlayed ) / this.trackInfo.length,
+              timeLeft = this.trackInfo.length - this.trackInfo.serverPlayed,
+              timer;
 
             //console.log( 'Server time left, s: ', timeLeft );
 
@@ -66,7 +68,7 @@
         }
 
     };
+}
 
-    SECTOR.api = api.init();
+module.exports = api;
 
-})(window.SECTOR);

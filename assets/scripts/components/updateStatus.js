@@ -1,7 +1,7 @@
-(function (SECTOR) {
+function status (SECTOR) {
     'use strict';
 
-    var status = {
+    return {
 
         byId: 'track-loader',
         byArtist: '.player__title',
@@ -23,8 +23,8 @@
             document.getElementById('connected').innerText = trackInfo.connected;
         }
 
-    };
+    }
 
-    SECTOR.status = status.init();
+}
 
-})(window.SECTOR);
+module.exports = status;

@@ -1,23 +1,25 @@
-(function (SECTOR) {
-    'use strict';
+'use strict';
 
-    var progress = {
+// var api = require('./api')();
 
+function progressBar(SECTOR) {
+
+    return {
         byId: 'player',
 
         init: function () {
             SECTOR.api.requestEmitter.addListener('requestReady', this.startRender.bind(this));
 
             this.addCanvas()
-                .startRender();
+              .startRender();
 
             return this;
         },
 
         addCanvas: function() {
             var canvas = document.createElement('canvas'),
-                player = document.getElementById(this.byId),
-                first = player.children[0];
+              player = document.getElementById(this.byId),
+              first = player.children[0];
 
             player.insertBefore(canvas, first);
             canvas.style.position = "absolute";
@@ -37,13 +39,13 @@
 
         renderBar: function () {
             var trackInfo = SECTOR.api.trackInfo,
-                diff = (Date.now() - trackInfo.timeLocal)/1000,
-                progress = (diff + trackInfo.serverPlayed) / trackInfo.length;
+              diff = (Date.now() - trackInfo.timeLocal)/1000,
+              progressBar = (diff + trackInfo.serverPlayed) / trackInfo.length;
 
             //console.log( 'Played local, s: ' + diff );
-            //console.log( 'Progress: ' + progress );
+            //console.log( 'Progress: ' + progressBar );
 
-            if ( progress > 1 ) {
+            if ( progressBar > 1 ) {
                 clearInterval(this.interval);
                 return;
             }
@@ -69,13 +71,11 @@
             }
 
             function partialCircle(ctx, x, y, rad) {
-                ctx.arc(x, y, rad, 0, progress * (Math.PI * 2), false);
+                ctx.arc(x, y, rad, 0, progressBar * (Math.PI * 2), false);
                 return ctx;
             }
         }
+    }
+}
 
-    };
-
-    SECTOR.progress = progress.init();
-
-})(window.SECTOR);
+module.exports = progressBar;

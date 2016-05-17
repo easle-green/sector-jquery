@@ -1,8 +1,5 @@
-(function (SECTOR) {
-    'use strict';
-
-    var program = {
-
+function program(SECTOR) {
+    return {
         byId: 'program',
         byDays: 'programs-days',
 
@@ -40,8 +37,8 @@
                 active.className = active.className.replace(this.byActive, '');
             }
             this
-                .locateSibling( parseInt(SECTOR.api.trackInfo.timeset.hours) )
-                .className += ' ' + this.byActive;
+              .locateSibling( parseInt(SECTOR.api.trackInfo.timeset.hours) )
+              .className += ' ' + this.byActive;
         },
 
         locateSibling: function(hour, current) {
@@ -61,6 +58,7 @@
 
     };
 
-    SECTOR.program = program.init();
+}
 
-})(window.SECTOR);
+
+module.exports = program;

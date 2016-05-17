@@ -9,7 +9,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development',
 
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
-	eslintpath = path.join(__dirname, '.eslintrc'),
+	// eslintpath = path.join(__dirname, '.eslintrc'),
 	PreloadPlugin = require('./webpack.html.preloader')
 	//PathRewriterPlugin = require('webpack-path-rewriter'),
 	//CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -24,13 +24,10 @@ module.exports = {
 
 	entry: {
 		main: "./assets/scripts/application.js",
-		styles: "./assets/styles/application.styl"
+		// styles: "./assets/styles/application.styl"
 	},
 
-	eslint: {
-		configFile: eslintpath,
-		emitWarning: true
-	},
+
 
 	stylus: {
 		use: [
@@ -51,16 +48,16 @@ module.exports = {
 		path:__dirname + "/build",
 		publicPath: "/",
 		filename: is_dev? "sector.js" : "assets/[name]-[hash].js",
-		chunkFilename: is_dev ? "sector.js" : "assets/[name]-[hash].js"
-		//library: 'SECTOR'
+		chunkFilename: is_dev ? "sector.js" : "assets/[name]-[hash].js",
+		// library: 'SECTOR'
 	},
 
 	module:  {
 		loaders:[
-			{
-				test: /\.js$/,
-				loader: 'babel?presets[]=es2015&presets[]=stage-3!eslint-loader'
-			},
+			// {
+			// 	test: /\.js$/,
+			// 	loader: 'babel?presets[]=es2015'
+			// },
 			{
 				test: /\.styl$/,
 				loader: ExtractTextPlugin.extract('style', 'css!stylus?paths=bower_components/bootstrap3-stylus/styl/&sourceMap&linenos&&resolve url')
@@ -85,7 +82,7 @@ module.exports = {
 
 	watch: is_dev,
 	watchOptions: {
-		aggregateTimeout: 1000
+		aggregateTimeout: 100
 	},
 
 	//devtool: is_dev ? "inline-source-map" : "source-map",
