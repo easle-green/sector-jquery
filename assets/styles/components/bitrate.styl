@@ -1,17 +1,30 @@
 .player
-
+  &__title,
+  &__trackname
+    margin 0 auto
+    max-width 140px
   &__bitrate
-    padding-left 40px
-
+    display inline-block
+    &-element
+      display: inline-block
+    .colname
+      text-align left
+    &-wrapper
+      display inline-block
+      text-align center
     &-container
+      display: table-cell
       font-size: 40px
       list-style: none
       padding: 0
-      margin: 97px 0 0
+      text-align: left;
+      vertical-align: bottom
+      height: 180px
+      min-width: 178px
+      max-width: 210px
 
     &-element
       padding-left: 30px
-      line-height: 45px
 
     &-active
       background: url(../images/svg/big_arrow.svg) no-repeat 0 12px
