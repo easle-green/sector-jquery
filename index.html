@@ -56,10 +56,27 @@
 
               </div>
               <div class="col-md-5 col-sm-12 col-xs-12 player__bitrate-wrapper">
-                <bitrate-block></bitrate-block>
+
+                <div class="player__bitrate">
+                  <div class="colname">Качество</div>
+                  <ul class="player__bitrate-container" id="player-bitrate">
+                    <li class="player__bitrate-element">
+                      <a class="player__bitrate-name" rel="56" data-channel="progressive" data-color="120" href="javascript: void(0)">
+                        56 Kbps
+                      </a>
+                    </li>
+                    <li class="player__bitrate-element player__bitrate-active">
+                      <a class="player__bitrate-name" rel="160" data-channel="progressive" data-color="100" href="javascript: void(0)">
+                        160 Kbps
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="colname">скорость аудиопотока</div>
+                </div>
+
               </div>
               <div class="col-md-13 col-lg-11">
-                <equalizer-block></equalizer-block>
+                <?php include('partials/equalizer.html'); ?>
               </div>
             </div>
           </div>
@@ -69,8 +86,17 @@
               <?php include('partials/menu.html'); ?>
             </div>
 
-            <!--HERE BLOCK-->
-            <blocks-block></blocks-block>
+            <div id="tabs_content" class="tabs">
+              <div class="formats columns active">
+                <?php include('partials/_progressive-formats.html'); ?>
+              </div>
+
+              <div class="programs columns first">
+                <div class="row row-nomargin" id="program">
+                  <?php include('partials/_progressive-program.html'); ?>
+                </div>
+              </div>
+            </div>
           </div>
 
           <footer class="footer row">
@@ -93,7 +119,7 @@
 <script src="/assets/scripts/vendor/EventEmitter-4.0.3.min.js"></script>
 <script src="/assets/scripts/vendor/sidebarEffects.js"></script>
 
-<!--<script src="/assets/scripts/common.js"></script>-->
+<script src="/assets/scripts/common.js"></script>
 
 <?php include('partials/googol.html'); ?>
 
