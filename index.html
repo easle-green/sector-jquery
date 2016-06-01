@@ -57,26 +57,10 @@
               </div>
               <div class="col-md-5 col-sm-12 col-xs-12 player__bitrate-wrapper">
 
-                <div class="player__bitrate">
-                  <div class="colname">Качество</div>
-                  <ul class="player__bitrate-container" id="player-bitrate">
-                    <li class="player__bitrate-element">
-                      <a class="player__bitrate-name" rel="56" data-channel="progressive" data-color="120" href="javascript: void(0)">
-                        56 Kbps
-                      </a>
-                    </li>
-                    <li class="player__bitrate-element player__bitrate-active">
-                      <a class="player__bitrate-name" rel="160" data-channel="progressive" data-color="100" href="javascript: void(0)">
-                        160 Kbps
-                      </a>
-                    </li>
-                  </ul>
-                  <div class="colname">скорость аудиопотока</div>
-                </div>
-
+                <bitrate-block></bitrate-block>
               </div>
               <div class="col-md-13 col-lg-11">
-                <?php include('partials/equalizer.html'); ?>
+                <equalizer-block></equalizer-block>
               </div>
             </div>
           </div>
@@ -119,7 +103,7 @@
 <script src="/assets/scripts/vendor/EventEmitter-4.0.3.min.js"></script>
 <script src="/assets/scripts/vendor/sidebarEffects.js"></script>
 
-<script src="/assets/scripts/common.js"></script>
+<!--<script src="/assets/scripts/common.js"></script>-->
 
 <?php include('partials/googol.html'); ?>
 

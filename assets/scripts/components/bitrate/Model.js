@@ -14,7 +14,6 @@ module.exports = function(sector) {
 					rate = this.bitrate;
 				}
 				this.bitrate = rate;
-				console.log(rate);
 				return rate;
 			}
 		}
