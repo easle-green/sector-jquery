@@ -21,32 +21,20 @@ function connect(module) {
     sector,
     require(path + 'template.html')	// Template
   );
-
-  //let path = './components/';
-  //let context = require.context(
-  //	path,
-  //	true,
-  //	/^(?!.*Component||template).*$/
-  //);
-  //context.keys().forEach(context);
-  //require(path + module) (
-  //	sector,
-  //	require(path + module + '.html')
-  //);
 }
-
-var SECTOR = {};
-SECTOR.api = require('./components/api')();
-var progress = require('./components/progressBar')(SECTOR);
-var status = require('./components/updateStatus')(SECTOR);
-var program = require('./components/updateProgram')(SECTOR);
-var slider = require('./components/volumeSlider');
-
-
+//
+// var SECTOR = {};
+// SECTOR.api = require('./components/api')();
+// var progress = require('./components/progressBar')(SECTOR);
+// var status = require('./components/updateStatus')(SECTOR);
+// var program = require('./components/updateProgram')(SECTOR);
+// var slider = require('./components/volumeSlider');
+//
+//
 require('../styles/application');
-
-SECTOR.api.init();
-program.init();
-status.init();
-progress.init();
-slider();
+//
+// SECTOR.api.init();
+// program.init();
+// status.init();
+// progress.init();
+// slider();

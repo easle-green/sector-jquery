@@ -17,12 +17,58 @@
 
   <div class="st-pusher" id="st-pusher">
 
-    <nav class="st-menu sidebar st-effect-6" id="menu-6">
+    <nav sidebar class="st-menu sidebar st-effect-6" id="menu-6">
       <div class="channels" id="history-block">
-        <?php include('partials/channels-sidebar.html'); ?>
+        <h5 class="sidebar-title">Каналы</h5>
+        <a href="/" class="channels-item">
+          <div class="channels-item--head">
+            <div class="channels-item--head-brand">SECTOR</div>
+            <div class="channels-item--head-name">Progressive</div>
+          </div>
+          <div class="channels-item--description">
+            Днём &mdash; масса электронного, этнического и прогрессивного материала; звучит музыка к фантастическим фильмам.
+            <br/>
+            Ночью &mdash; полное погружение в обстановку космической станции.
+          </div>
+        </a>
+        <a href="/space/" class="channels-item">
+          <div class="channels-item--head">
+            <div class="channels-item--head-brand">SECTOR</div>
+            <div class="channels-item--head-name">Space</div>
+          </div>
+          <div class="channels-item--description">
+            Днём и ночью &mdash; отборнейшая музыка традиционных электронных направлений.
+            <br/>
+            Авторские передачи Михаила Эксалота, множество редкого материала в аудиофильском качестве.
+          </div>
+        </a>
+        <a class="channels-item disabled">
+          <div class="channels-item--head">
+            <div class="channels-item--head-brand">SECTOR</div>
+            <div class="channels-item--head-name">90s</div>
+            <div class="channels-item--head-label">Скоро открытие!</div>
+          </div>
+          <div class="channels-item--description">
+            Время девяностых стало одним из переломных в музыкальной индустрии, давшее миру новое звучание синтезаторов, новые жанры и новые ритмы.
+            <br/>
+            В эфире &mdash; отечестванная музыка и Западные хиты.
+          </div>
+        </a>
+        <a class="channels-item disabled">
+          <div class="channels-item--head">
+            <div class="channels-item--head-brand">SECTOR</div>
+            <div class="channels-item--head-name">Classical</div>
+            <div class="channels-item--head-label">Скоро открытие!</div>
+          </div>
+          <div class="channels-item--description">
+            Классика вечна сама по себе. Однако она имеет развитие в виде современного академизма.
+            <br/>
+            На канале &mdash; только лучшие творения в виртуозном исполнении от лучших дирижёров и коллективов.
+          </div>
+        </a>
       </div>
       <div class="history-block">
-        <?php @include('history.php'); ?>
+
       </div>
     </nav>
 
@@ -31,7 +77,37 @@
 
         <div class="container">
           <header class="header row">
-            <?php include('partials/_progressive-header.html'); ?>
+            <ul class="lang col-md-24 list-inline text-right">
+              <li><a class="lang__icon active" href="/">RU</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">DE</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">GE</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">FR</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">IT</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">EN</a></li>
+              <li><a class="lang__icon" href="javascript:void(0)">SP</a></li>
+            </ul>
+
+            <div class="logo col-md-24">
+              <div class="logo__sector col-md-5 text-center">
+                <a class="logo__sector-img" href="http://sectorradio.ru/">
+                  <img class="w100" src="/assets/images/svg/sector-2016.svg" alt="SECTOR RADIO" />
+                </a>
+              </div>
+              <div class="logo__slogan">
+                <h2 class="logo__slogan-about">
+                  <span>Hi-Fi</span> интернет-радиостанция в форматах <span class="black">OGG Vorbis</span> <span class="lowercase">и</span> <span class="black">FLAC</span>
+                </h2>
+                <h1 class="logo__slogan-describe">
+                  <span>Канал</span> <span class="black">прогрессивной электронной</span> музыки
+                </h1>
+                <a href="javascript: void(0)"
+                   class="btn btn-channels no-decoration"
+                   id="menu-trigger"
+                   data-effect="st-effect-6">
+                  Другие каналы
+                </a>
+              </div>
+            </div>
           </header>
 
           <div class="row">
@@ -95,16 +171,16 @@
 
 </div>
 
-<script src="/assets/scripts/vendor/jquery.js"></script>
-<script src="/assets/scripts/vendor/jquery.jplayer2.min.js"></script>
-<script src="/assets/scripts/vendor/jquery.easing.1.3.js"></script>
-<script src="/assets/scripts/vendor/jquery.backgroundSize.js"></script>
-<script src="/assets/scripts/vendor/bgpos.js"></script>
-<script src="/assets/scripts/vendor/EventEmitter-4.0.3.min.js"></script>
-<script src="/assets/scripts/vendor/sidebarEffects.js"></script>
+<!--<script src="/assets/scripts/vendor/jquery.js"></script>-->
+<!--<script src="/assets/scripts/vendor/jquery.jplayer2.min.js"></script>-->
+<!--<script src="/assets/scripts/vendor/jquery.easing.1.3.js"></script>-->
+<!--<script src="/assets/scripts/vendor/jquery.backgroundSize.js"></script>-->
+<!--<script src="/assets/scripts/vendor/bgpos.js"></script>-->
+<!--<script src="/assets/scripts/vendor/EventEmitter-4.0.3.min.js"></script>-->
+<!--<script src="/assets/scripts/vendor/sidebarEffects.js"></script>-->
 
 <!--<script src="/assets/scripts/common.js"></script>-->
-
+<!---->
 <?php include('partials/googol.html'); ?>
 
 </body>
