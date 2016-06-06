@@ -4,11 +4,10 @@
 
     <li ng-repeat="eq in equalizer"
         class="equalizer__container-element size{{eq.level}}"
-        ng-class="{'disabled': eq.active > bitrate}"
+        ng-class="{'disabled': map[$index] === 0}"
         data-size="{{eq.level}}"
         data-rate="{{eq.active}}">
       <div>
-        <b></b>
       </div>
       <a href="javascript:void(0)">
         <div>

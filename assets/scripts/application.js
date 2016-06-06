@@ -23,12 +23,12 @@ function connect(module) {
   );
 }
 //
-// var SECTOR = {};
-// SECTOR.api = require('./components/api')();
-// var progress = require('./components/progressBar')(SECTOR);
-// var status = require('./components/updateStatus')(SECTOR);
-// var program = require('./components/updateProgram')(SECTOR);
-// var slider = require('./components/volumeSlider');
+var SECTOR = {};
+SECTOR.api = require('./components/api')();
+var progress = require('./components/progressBar')(SECTOR);
+var status = require('./components/updateStatus')(SECTOR);
+var program = require('./components/updateProgram')(SECTOR);
+var slider = require('./components/volumeSlider');
 //
 //
 require('../styles/application');

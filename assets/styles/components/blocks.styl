@@ -1,18 +1,22 @@
 .tabs
   &,
   > .columns
-    height 575px
+    height 0
+    overflow hidden
+    transition .5s all
   > .columns
     padding-left 4%
     padding-right 4%
-    &.formats
-      padding-right calc(4% - 10px)
-    &.first
-      display none
+  .active
+    height 575px
+  &.formats
+    padding-right calc(4%-10px)
+  &.first
+    display none
 
 .formats
   background-color rgb(90,121,141)
-  padding-bottom 40px
+
 
   &.columns
     padding-right
@@ -80,7 +84,8 @@
   background-color $blue_light
   font-size 14px
   line-height 1.2
-  padding: 40px 0 25px
+  .row
+    padding-top 40px
 
   &.columns
     padding-right 30px

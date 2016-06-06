@@ -1,16 +1,17 @@
 'use strict';
 
 const angular = require('angular');
+require('ng-slide-down');
 
-const sector = angular.module('sector',[]);
+const sector = angular.module('sector',['ng-slide-down']);
 
 sector.modules = [
   'bitrate',
   'blocks',
   'equalizer',
   // 'player',
-  'sidebar'
-  // 'tab'
+  'sidebar',
+  'tab'
 ];
 
 sector.value('DEFAULTS', {
@@ -28,12 +29,12 @@ sector.value('DEFAULTS', {
     {freq: "8", level: 70, active: 0},
     {freq: "6", level: 70, active: 0},
     {freq: "9", level: 60, active: 0},
-    {freq: "10", level: 80, active: 0},
-    {freq: "11", level: 60, active: 0},
-    {freq: "12", level: 50, active: 0},
-    {freq: "13", level: 60, active: 0},
-    {freq: "15", level: 70, active: 0},
-    {freq: "16", level: 60, active: 56},
+    {freq: "10", level: 80, active: 56},
+    {freq: "11", level: 60, active: 56},
+    {freq: "12", level: 50, active: 56},
+    {freq: "13", level: 60, active: 56},
+    {freq: "15", level: 70, active: 160},
+    {freq: "16", level: 60, active: 160},
     {freq: "17", level: 80, active: 160},
     {freq: "18", level: 80, active: 160},
     {freq: "20", level: 100, active: 256}

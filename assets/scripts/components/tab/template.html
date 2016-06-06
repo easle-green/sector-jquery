@@ -1,0 +1,14 @@
+<div class="menu__list" ng-init="widgetExpanded = true">
+  <div class="row">
+    <ul class="list-inline">
+      <li ng-repeat="(id, tab) in tab_names"
+          class="menu__list-item"
+          ng-class="{'active': active == id}"
+          ng-click="update(id)"
+      >
+        <a href="javascript:void(0)"
+           class="menu__list-link">{{ tab }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
