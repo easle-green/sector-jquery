@@ -1,9 +1,18 @@
 'use strict';
 
 const angular = require('angular');
-require('ng-slide-down');
+var a = require('angular-route');
 
-const sector = angular.module('sector',['ng-slide-down']);
+const sector = angular.module('sector',['ngRoute']);
+// const sector = angular.module('sector',[]);
+debugger;
+sector.config(function ($routeProvider) {
+  debugger;
+  $routeProvider
+    .when('/', {
+      redirectTo: '/aaaaa'
+    });
+});
 
 sector.modules = [
   'bitrate',
