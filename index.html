@@ -1,5 +1,10 @@
 ﻿<!DOCTYPE html>
-<html ng-app="sector" class="channel-main">
+<html ng-app="sector"
+      sector-app
+      ng-class="{
+        'channel-space': is('space'),
+        'channel-main': is('main')
+      }">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
@@ -20,7 +25,7 @@
     <nav sidebar class="st-menu sidebar st-effect-6" id="menu-6">
       <div class="channels" id="history-block">
         <h5 class="sidebar-title">Каналы</h5>
-        <a href="/" class="channels-item">
+        <a ui-sref="main" class="channels-item">
           <div class="channels-item--head">
             <div class="channels-item--head-brand">SECTOR</div>
             <div class="channels-item--head-name">Progressive</div>
@@ -31,7 +36,7 @@
             Ночью &mdash; полное погружение в обстановку космической станции.
           </div>
         </a>
-        <a href="/space/" class="channels-item">
+        <a ui-sref="space" class="channels-item">
           <div class="channels-item--head">
             <div class="channels-item--head-brand">SECTOR</div>
             <div class="channels-item--head-name">Space</div>

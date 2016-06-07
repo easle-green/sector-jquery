@@ -1,10 +1,4 @@
 'use strict';
-// Use npm packages for vendors
-//require.context('./vendor', true, /\.js$/)([]);
-
-// Use commonJS format for modules
-//require('./common');
-//require.context('./components', true, /\.js$/)([]);
 
 const sector = require('./conf');
 
@@ -14,22 +8,37 @@ sector.modules.forEach((module)=> {
 
 function connect(module) {
   let path = './components/' + module + '/';
-  require(path + 'Model')(sector);	// Model
-  require(path + 'Ctrl')(sector); 	// Controller
+  require(path + 'Model')(sector);
+  require(path + 'Ctrl')(sector);
   // require(path + 'styles');			// Styles
-  require(path + 'Component')(		// Component
+  require(path + 'Component')(
     sector,
-    require(path + 'template.html')	// Template
+    require(path + 'template.html')
   );
 }
-//
+
+require('./components/sector/Ctrl')(sector);
+require('./components/sector/Directive')(sector);
+require('./components/routing')(sector);
+
+
+///////////////////////////////////////////////////////////////////////
+//    ___  _____                  _           _            _  _  _   //
+//   |_  ||  _  |                | |         | |          | || || |  //
+//     | || | | |   __ _   ___   | |_  ___   | |__    ___ | || || |  //
+//     | || | | |  / _` | / _ \  | __|/ _ \  | '_ \  / _ \| || || |  //
+// /\__/ /\ \/' / | (.) || (.) | | |_| (.) | | | | ||  __/| || ||_|  //
+// \____/  \_/\_\  \__, | \___/   \__|\___/  |_| |_| \___||_||_|(_)  //
+//                  __/ |                                            //
+//                  |___/                          powered by ASCII  //
+///////////////////////////////////////////////////////////////////////
+
 var SECTOR = {};
 SECTOR.api = require('./components/api')();
 var progress = require('./components/progressBar')(SECTOR);
 var status = require('./components/updateStatus')(SECTOR);
 var program = require('./components/updateProgram')(SECTOR);
 var slider = require('./components/volumeSlider');
-//
 //
 require('../styles/application');
 //

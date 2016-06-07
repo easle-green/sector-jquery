@@ -1,18 +1,9 @@
 'use strict';
 
 const angular = require('angular');
-var a = require('angular-route');
+require('angular-ui-router');
 
-const sector = angular.module('sector',['ngRoute']);
-// const sector = angular.module('sector',[]);
-debugger;
-sector.config(function ($routeProvider) {
-  debugger;
-  $routeProvider
-    .when('/', {
-      redirectTo: '/aaaaa'
-    });
-});
+const sector = angular.module('sector', ['ui.router']);
 
 sector.modules = [
   'bitrate',
