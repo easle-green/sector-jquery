@@ -2,8 +2,9 @@
 
 const angular = require('angular');
 require('angular-ui-router');
+require('angular-translate');
 
-const sector = angular.module('sector', ['ui.router']);
+const sector = angular.module('sector', ['ui.router', 'pascalprecht.translate']);
 
 sector.modules = [
   'bitrate',

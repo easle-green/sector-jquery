@@ -20,6 +20,7 @@ function connect(module) {
 require('./components/sector/Ctrl')(sector);
 require('./components/sector/Directive')(sector);
 require('./components/routing')(sector);
+require('./components/localization/localization')(sector);
 
 
 ///////////////////////////////////////////////////////////////////////
