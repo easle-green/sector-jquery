@@ -22,18 +22,21 @@
       font-weight: lighter
       text-transform: uppercase
       margin: 0
-      font-size: 32px
+      font-size: 30px
       line-height: 100%
     &-about
       padding: 0
+      .lowercase
+        text-transform lowercase
       > span
-        text-transform: none
+        text-transform uppercase
     .black
       color: rgba(0, 0, 0, 0.9)
 
 .lang
   margin-bottom 20px
   &__icon
+    text-transform uppercase
     cursor default
     size 30px 30px
     margin-left: 0

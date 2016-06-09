@@ -3,6 +3,7 @@
 const angular = require('angular');
 require('angular-ui-router');
 require('angular-translate');
+require('angular-translate-loader-static-files');
 
 const sector = angular.module('sector', ['ui.router', 'pascalprecht.translate']);
 
@@ -11,11 +12,13 @@ sector.modules = [
   'blocks',
   'equalizer',
   // 'player',
+  'languages',
   'sidebar',
   'tab'
 ];
 
 sector.value('DEFAULTS', {
+  languages: ['ru', 'de', 'ge', 'fr', 'it', 'en', 'sp'],
   bitrate: 160,
   tab: 0,
   rates: [
