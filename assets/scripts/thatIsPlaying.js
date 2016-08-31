@@ -21,16 +21,6 @@
         },
 
         updateStatus: function () {
-            // TODO Use XMLHttpRequest for this.
-            // Do not copy-paste from progressbar.js for new module, make only one xhr function for both
-            // $.get(
-            //     //'/nowplaying-' + $('#track-loader').data('channel') + '.txt?' + Date.now(),
-            //     '/track.json?' + Date.now(),
-            //     function (info) {
-            //         track.querySelector('.player__title').innerText = info.artist;
-            //         track.querySelector('.player__trackname').innerText = info.title;
-            //     }
-            // )
             var xhr = new XMLHttpRequest(),
                 data;
 
@@ -40,12 +30,11 @@
                     this.timer = data;
                     this.writeStatus.bind(this)(data);
                     this.considersTime();
-                    console.log('11');
                 }
             }
 
             xhr.onreadystatechange = xhrReady.bind(this);
-            xhr.open("GET", this.url + '?' + Date.now(), true); // async
+            xhr.open("GET", this.url + '?' + Date.now(), true);
             xhr.send();
         },
 
@@ -54,19 +43,13 @@
                 whatTimeStamp = this.timer.timestamp,
                 whatServerTime = this.timer.serverTime,
                 timeLeft = (lengthTrack + whatTimeStamp - whatServerTime) * 1000;
-            console.log('длина =',lengthTrack,'старт =',whatTimeStamp,'время на сервере',whatServerTime);
-            console.log('+-',lengthTrack + whatTimeStamp - whatServerTime,timeLeft);
 
             if (timeLeft <= 0) {
-                console.log('я в if');
-                setTimeout(this.updateStatus.bind(this), 3000);
-            } else {
-                console.log('я в else');
-                setTimeout(this.updateStatus.bind(this), timeLeft);
+                timeLeft = 3000;
             }
 
-
-
+            setTimeout(this.updateStatus.bind(this), timeLeft);
+            
         }
     };
 
