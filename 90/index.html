@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html ng-app="sector" class="channel-space">
+<html ng-app="sector" class="channel-90">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <title>СЕКТОР радио | SPACE</title>
+  <title>СЕКТОР радио | 90s</title>
 
   <?php include('../partials/favicons.html'); ?>
 
@@ -33,7 +33,7 @@
 
         <div class="container">
           <header class="header row">
-            <?php include('../partials/_space-header.html'); ?>
+            <?php include('../partials/_90-header.html'); ?>
           </header>
 
           <div class="row">
@@ -46,7 +46,7 @@
                     <div id="jplayer" class="hidden"></div>
                     <a class="play" id="play" href="javascript:void(0)"></a>
                   </div>
-                  <div class="player__track" id="track-loader" data-channel="space">
+                  <div class="player__track" id="track-loader" data-channel="next">
                     <div class="title player__title"></div>
                     <div class="trackname player__trackname"></div>
                   </div>
@@ -66,13 +66,23 @@
                       Ваша система не поддерживает высококачественный поток OGG. Вы были автоматически переключены на поток MP3 с потерями.
                     </li>
                     <li class="player__bitrate-element">
-                      <a class="player__bitrate-name" rel="56" data-channel="space" data-color="120" href="javascript: void(0)">
+                      <a class="player__bitrate-name" rel="56" data-channel="next" data-color="120" href="javascript: void(0)">
                         &nbsp;&nbsp;56 Kbps
                       </a>
                     </li>
                     <li class="player__bitrate-element player__bitrate-active">
-                      <a class="player__bitrate-name" rel="160" data-channel="space" data-color="100" href="javascript: void(0)">
+                      <a class="player__bitrate-name" rel="160" data-channel="next" data-color="100" href="javascript: void(0)">
                         160 Kbps
+                      </a>
+                    </li>
+                    <li class="player__bitrate-element player__bitrate">
+                      <a class="player__bitrate-name" rel="192" data-channel="next" data-color="100" href="javascript: void(0)">
+                        192 Kbps
+                      </a>
+                    </li>
+                    <li class="player__bitrate-element player__bitrate">
+                      <a class="player__bitrate-name" rel="256" data-channel="next" data-color="100" href="javascript: void(0)">
+                        256 Kbps
                       </a>
                     </li>
                   </ul>
@@ -93,19 +103,19 @@
 
             <div id="tabs_content" class="tabs">
               <div class="formats columns active">
-                <?php include('../partials/_space-formats.html'); ?>
+                <?php include('../partials/_90-formats.html'); ?>
               </div>
 
               <div class="programs columns first">
                 <div class="row row-nomargin" id="program">
-                  <?php include('../partials/_space-program.html'); ?>
+                  <?php include('../partials/_90-program.html'); ?>
                 </div>
               </div>
             </div>
           </div>
 
           <footer class="footer row">
-            <?php include('../partials/_space-footer.html'); ?>
+            <?php include('../partials/_90-footer.html'); ?>
           </footer>
 
         </div>

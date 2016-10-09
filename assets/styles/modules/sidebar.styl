@@ -4,7 +4,7 @@
   &-title
     position: relative
     line-height: 40px
-    margin: 40px auto
+    margin: 40px auto 30px
     font-size: 29px
     font-weight: lighter
     text-align center
@@ -71,11 +71,12 @@
         display: inline-block
         font-size 10px
         font-weight: 600
-        text-transform uppercase
         padding 0 19px
         line-height 20px
         color #313737
         background-color #AFB2B2
+        &:not(.no-transform)
+          text-transform uppercase
         &:after,
         &:before
           size 0 0

@@ -97,8 +97,13 @@ module.exports = {
 			inject: 'body'
 		}),
 		new HtmlWebpackPlugin({
-			filename: 'space.html',
+			filename: 'space/index.html',
 			template: './space/index.html',
+			inject: 'body'
+		}),
+		new HtmlWebpackPlugin({
+			filename: '90/index.html',
+			template: './90/index.html',
 			inject: 'body'
 		}),
 		// Reference: https://github.com/webpack/extract-text-webpack-plugin
