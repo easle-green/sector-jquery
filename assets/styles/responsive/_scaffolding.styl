@@ -40,6 +40,7 @@
     padding 35px 28px 0
   .lang
     text-align center
+    display none
   .logo
     &__sector-img
       margin-left 0
@@ -61,8 +62,16 @@
       &__volume,
       &__bitrate .colname
         display none
-      &__bitrate-container
-        margin-top 75px
+      &__bitrate
+        $name = selector()
+        &-container
+          height 154px
+          &.disabled
+            {$name}-mp3,
+            {$name}-element
+              display none
+        &-wrapper
+          text-align left
     .equalizer
       display none
     .tabs, .tabs > .columns
@@ -86,8 +95,6 @@
     &-descr
       font 14px/17px Arial
 
-  .st-container .st-content
-    background-size: cover
   .footer
     .columns
       margin-left: 0
@@ -112,11 +119,17 @@
     .text-right
       text-align left
 
+  .preloader__footer
+    bottom 4%
+
 
 // 960 - 1280
 @media screen and (min-width: 992px) and (max-width: 1152px)
   .logo__slogan
     padding-left 55px
+    &-about,
+    &-describe
+      font-size 23px
   .logo__sector-img
     margin-left 27px
   .container .player
@@ -142,17 +155,20 @@
       font-size 12px
   .footer__cell
     padding 0 10px
-  .channel-main
-    .st-container
-      .st-content
-        background-size initial
+  .st-container .st-content
+    background-size initial
+  .player__bitrate
+    &-container
+      font-size 36px
+    &-element
+      line-height 1
 
 
 @media screen and (min-width: 1153px) and (max-width: 1280px)
   .logo__slogan
     &-about,
     &-describe
-      font-size 32px
+      font-size 29px
   .player
     &__bitrate
       padding-left: 0
@@ -162,12 +178,6 @@
 @media screen and (min-width: 1153px) and (max-width: 1224px)
   .formats-descr
     font 14px/17px Arial
-
-@media screen and (min-width: 1500px)
-  .channel-main
-    .st-container
-      .st-content
-        background-size cover
 
 // 1680 - 1900
 @media screen and (min-width: 1681px)
@@ -197,7 +207,7 @@
         padding-left 95px
         &-about,
         &-describe
-          font-size: 34px
+          font-size: 31px
     .player
       &__block
         margin-left: 0

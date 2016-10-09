@@ -1,0 +1,91 @@
+.preloader
+  $this = selector()
+  $aniFunc = cubic-bezier(0.7,0,0.3,1)
+  fixed top 0 left 0
+  size 100% 100%
+  z-index: 10000
+  min-height: 480px
+
+  &__logo
+    fixed top 40% left 50%
+    margin -63px 0 0 -35px
+    width 70px
+    cursor: default
+    pointer-events: none
+    opacity 1
+    animation initialLogo 2.2s $aniFunc both
+
+  &__loader
+    absolute bottom 15% left 50%
+    margin-left -65px
+    width 130px
+    text-align center
+    color #fff
+    font-weight 100
+    font-size 25px
+    opacity 1
+    animation initialLoading 1s $aniFunc both
+    animation-delay 1.6s
+
+  &__footer
+    absolute bottom 10% left 70%
+    margin-left -55%
+    width 70%
+    text-align center
+    font-weight 100
+    font-size 11px
+    color rgba(255,255,255,0.8)
+    opacity 1
+    animation initialFooter 1s $aniFunc both
+    animation-delay 1.8s
+
+  &__body .st-content
+    top: 100%
+    transition top 0.8s $aniFunc
+
+  &-ready
+    {$this}
+      animation finalContainer 0.5s $aniFunc forwards
+      animation-delay 0.35s
+    {$this}__logo
+      animation finalLogo 0.5s $aniFunc forwards
+      animation-delay 0.5s
+    {$this}__body .st-content
+      top 0
+
+
+@keyframes initialLogo {
+  from {
+    opacity: 0
+    top: 130%
+  }
+}
+@keyframes initialLoading {
+  from {
+    opacity: 0
+    bottom: -5%
+  }
+}
+@keyframes initialFooter {
+  from {
+    opacity: 0
+    bottom: -50px
+  }
+}
+
+@keyframes finalContainer {
+  to {
+    top: -110%
+  }
+}
+@keyframes finalLogo {
+  to {
+    top: -20%
+    opacity 0
+  }
+}
+@keyframes finalOpacity {
+  to {
+    opacity: 0
+  }
+}

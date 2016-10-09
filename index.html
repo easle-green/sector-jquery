@@ -8,12 +8,14 @@
 
   <?php include('partials/favicons.html'); ?>
 
-  <link href="/assets/styles-20a611c0720ce0f63d53.css" rel="stylesheet">
+  <link href="/assets/main-eaef1629074864e24dc1.css" rel="stylesheet">
 
 </head>
 <body>
 
-<div id="st-container" class="st-container st-effect-6">
+<?php include('partials/preloader.html'); ?>
+
+<div id="st-container" class="st-container st-effect-6<?=$showLoader?' preloader__body':''?>">
 
   <div class="st-pusher" id="st-pusher">
 
@@ -60,9 +62,12 @@
                 <div class="player__bitrate">
                   <div class="colname">Качество</div>
                   <ul class="player__bitrate-container" id="player-bitrate">
+                    <li class="player__bitrate-mp3">
+                      Ваша система не поддерживает высококачественный поток OGG. Вы были автоматически переключены на поток MP3 с потерями.
+                    </li>
                     <li class="player__bitrate-element">
                       <a class="player__bitrate-name" rel="56" data-channel="progressive" data-color="120" href="javascript: void(0)">
-                        56 Kbps
+                        &nbsp;&nbsp;56 Kbps
                       </a>
                     </li>
                     <li class="player__bitrate-element player__bitrate-active">
@@ -118,8 +123,9 @@
 <script src="/assets/scripts/vendor/bgpos.js"></script>
 <script src="/assets/scripts/vendor/EventEmitter-4.0.3.min.js"></script>
 <script src="/assets/scripts/vendor/sidebarEffects.js"></script>
+<script src="/assets/scripts/common.js?eaef1629074864e24dc1"></script>
 
-<script src="/assets/scripts/common.js"></script>
+<script src="/assets/main-eaef1629074864e24dc1.js"></script>
 
 <?php include('partials/googol.html'); ?>
 

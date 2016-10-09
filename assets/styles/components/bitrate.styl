@@ -1,17 +1,24 @@
 .player
+
   &__title,
   &__trackname
     margin 0 auto
-    max-width 140px
+    max-width 85%
+
   &__bitrate
+    $el = selector()
     display inline-block
-    &-element
-      display: inline-block
+
     .colname
       text-align left
+      &:last-child
+        margin-top: 3px
+        margin-left 33px
+
     &-wrapper
       display inline-block
       text-align center
+
     &-container
       display: table-cell
       font-size: 40px
@@ -22,9 +29,25 @@
       height: 180px
       min-width: 178px
       max-width: 210px
+      &.disabled
+        position relative
+        {$el}-element
+          opacity: 0.4
+        {$el}-name
+          cursor default
+        {$el}-mp3
+          display block
 
     &-element
       padding-left: 30px
+      line-height 45px
+      display: block
+
+    &-mp3
+      display none
+      absolute top 15px left 31px
+      font-size 11px
+      line-height 1.2
 
     &-active
       background: url(../images/svg/big_arrow.svg) no-repeat 0 12px
@@ -37,6 +60,3 @@
       color: rgba(0, 0, 0, 0.6)
       transition: color 0.2s ease 0s
       text-decoration: none
-
-    .colname:last-child
-        margin-top: 3px

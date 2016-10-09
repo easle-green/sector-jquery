@@ -2,41 +2,56 @@ window.SECTOR = window.SECTOR || {};
 
 $(document).ready(function() {
 
-  // buttons animation
-  $('#play').css({
-    backgroundSize: "cover"
-  });
-
-
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-    $('body').addClass('is_mobile');
-  }
-
-  // плеер
-  var current = $('.player__bitrate-active > .player__bitrate-name'),
-    current = {
-      channel: current.data('channel'),
-      source: current.attr('rel')
-    };
-
-  window.currentVolume = .75;
-
-  initPlayer(current.channel, current.source);
-
-  $('#play')
-    .click(function() {
-      if (!$(this).hasClass('pause')) {
-        buttonPlay(true);
-        $("#jplayer").jPlayer('play');
-      } else {
-        buttonPlay(false);
-        $("#jplayer").jPlayer('stop');
-      }
+    // buttons animation
+    $('#play').css({
+        backgroundSize: "cover"
     });
+
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        $('body').addClass('is_mobile');
+    }
+
+    var bitrateContainer = document.getElementById('player-bitrate');
+
+    window.currentVolume = .75;
+
+    if (!checkForOGG()) {
+        var active = document.querySelector('.player__bitrate-active');
+        bitrateContainer.className += ' disabled';
+        animateBitrate($('#equalizer .' + parseInt(active.querySelector('.player__bitrate-name').rel) + 'k'), 'mp3', 'down');
+        active.classList.remove("player__bitrate-active");
+    }
+
+    var init = false,
+        play = $('#play'),
+        player = $("#jplayer");
+
+    play.click(clickAction.bind(this));
+
+    function clickAction () {
+        if (!play.hasClass('pause')) {
+            buttonPlay(true);
+            if ( !init ) {
+                var current = document.querySelector('.player__bitrate-active > .player__bitrate-name');
+                if ( !current ) {
+                    current = document.querySelector('.player__bitrate-element > .player__bitrate-name');
+                }
+                initPlayer(current.dataset.channel, current.rel);
+                init = true;
+            } else {
+                player.jPlayer('play');
+            }
+        } else {
+            buttonPlay(false);
+            player.jPlayer('pause');
+        }
+        return init;
+    }
 
   // изменение битрейта
   $('#player-bitrate .player__bitrate-name').click(function() {
-    if ($(this).parent().hasClass('.player__bitrate-active')) {
+    if ($(this).parent().hasClass('.player__bitrate-active') || /disabled/.test(bitrateContainer.className)) {
       return;
     }
 
@@ -51,7 +66,8 @@ $(document).ready(function() {
       played = play.hasClass('pause');
 
     animateBitrate($('#equalizer .' + current_value + 'k'), value, (
-      current_value < value ? 'up' : 'down'));
+      current_value < value ? 'up' : 'down')
+    );
     active.removeClass('player__bitrate-active');
     $(this).parent().addClass('player__bitrate-active');
     //changeColor(lighten($default_color, percent));
@@ -107,7 +123,6 @@ $(document).ready(function() {
       .slideDown();
   });
 
-
   $(window).bind('resize', function() {
     $('body').css('width', $(document).width());
   });
@@ -120,11 +135,13 @@ $(document).ready(function() {
             return;
         }
         this.style.backgroundPosition = '50% ' + (-this.scrollTop/bgDelta) + 'px';
-    }
+    };
+
+    hidePreloader();
 
 });
 
-animateBitrate = function(curr, rate, dir) {
+function animateBitrate(curr, rate, dir) {
   var up = (dir === 'up'),
     left = (up ? 0 : '-20px'),
     next;
@@ -150,85 +167,46 @@ animateBitrate = function(curr, rate, dir) {
     if (!curr.hasClass(rate + 'k') && !(!up && curr.prev().hasClass(rate +
         'k'))) {
       animateBitrate(next, rate, dir);
-    } // else {
-    //   changeBitrate(up);
-    //}
-  });
-
-};
-
-/*changeBitrate = function(up) {
-    $('#equalizer > li').each(function(){
-        var current = parseInt($(this).attr('class').replace(/size(\d+) (.+)/, '$1').replace('size', '')),
-            change = current + (up? 10 : -10);
-
-        console.log(current)
-
-        if (change <= 90 && change > 0) {
-            $(this)
-                .removeClass('size'+current)
-                .addClass('size'+change)
-        }
-
-    });
-
-}*/
-
-initPlayer = function(channel, ices) {
-  $("#jplayer").jPlayer({
-    volume: window.currentVolume,
-    ready: function() {
-      $(this).jPlayer("setMedia", {
-        oga: "http://89.223.45.5:8000/" + channel + "-" + ices
-      });
-      // ready callback
-    },
-    swfPath: "assets",
-    supplied: "oga"
-  });
-};
-
-changeVolume = function(volume) {
-  $("#jplayer").jPlayer("option", "volume", window.currentVolume);
-};
-
-/*
-checkTime = function() {
-    var now = new Date(),
-        hours = now.getHours(),
-        night = '#6A758D',
-        evening = '#20A0A5';
-
-    if(hours<7 || hours>22) {
-        changeColor(night);
-        return night;
-    } else if (hours>=7 && hours <= 12) {
-        changeColor(evening);
-        return evening;
     }
-};
-
-
-changeColor = function(color) {
-    $('body').css('background-color', color);
-    return color;
+  });
 }
 
-
-lighten = function (color, light) {
-    color = color.replace(/[^0-9,]+/g, "");
-    var red = color.split(",")[0];
-    var gre = color.split(",")[1];
-    var blu = color.split(",")[2];
-
-    var hsv = RgbToHsv(red,gre,blu);
-    var rgb = HsvToRgb(hsv.h, hsv.s, light);
-
-    return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
+function checkForOGG () {
+    var audio = document.createElement('audio');
+    return audio.canPlayType('audio/ogg;codecs="vorbis,opus"');
 }
-*/
 
-buttonPlay = function($play) {
+function initPlayer(channel, ices) {
+    var isOggSupported = checkForOGG(),
+        stream = isOggSupported?
+                    { oga: "http://89.223.45.5:8000/" + channel + "-" + ices }
+                    :
+                    { mp3: "http://89.223.45.5:8000/" + channel };
+
+    $("#jplayer").jPlayer({
+        volume: window.currentVolume,
+        ready: function () {
+            $(this).jPlayer("setMedia", stream);
+            $(this).jPlayer("play");
+        },
+        swfPath: "assets",
+        supplied: Object.getOwnPropertyNames(stream)[0]
+    });
+}
+
+function hidePreloader() {
+    if ( !/preloader-ready/.test(document.body.className) ) {
+        setTimeout(function(){
+            document.body.className += ' preloader-ready';
+        }, 3500);
+    }
+}
+
+function changeVolume(volume) {
+  $("#jplayer").jPlayer("option", "volume", window.currentVolume);
+}
+
+function buttonPlay($play) {
   $('#play').stop().animate({
     width: '70px',
     height: '70px',
@@ -246,10 +224,44 @@ buttonPlay = function($play) {
       left: 0
     }, 70, 'easeOutCirc');
   });
-};
+}
 
 
 /* ----------------------------------
+
+ checkTime = function() {
+ var now = new Date(),
+ hours = now.getHours(),
+ night = '#6A758D',
+ evening = '#20A0A5';
+
+ if(hours<7 || hours>22) {
+ changeColor(night);
+ return night;
+ } else if (hours>=7 && hours <= 12) {
+ changeColor(evening);
+ return evening;
+ }
+ };
+
+
+ changeColor = function(color) {
+ $('body').css('background-color', color);
+ return color;
+ }
+
+
+ lighten = function (color, light) {
+ color = color.replace(/[^0-9,]+/g, "");
+ var red = color.split(",")[0];
+ var gre = color.split(",")[1];
+ var blu = color.split(",")[2];
+
+ var hsv = RgbToHsv(red,gre,blu);
+ var rgb = HsvToRgb(hsv.h, hsv.s, light);
+
+ return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
+ }
 
 function RgbToHsv(r, g, b) {
     var min = Math.min(r, g, b),
