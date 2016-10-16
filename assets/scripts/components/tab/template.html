@@ -1,0 +1,22 @@
+<div class="menu__list" ng-init="widgetExpanded = true">
+  <div class="row">
+    <ul class="list-inline">
+      <li class="menu__list-item"
+          ng-class="{'active': active == 0}"
+          ng-click="update(0)"
+      >
+        <a href="javascript:void(0)"
+           class="menu__list-link"
+           translate="tabs.quality"></a>
+      </li>
+      <li class="menu__list-item"
+          ng-class="{'active': active == 1}"
+          ng-click="update(1)"
+      >
+        <a href="javascript:void(0)"
+           class="menu__list-link"
+           translate="tabs.schedule"></a>
+      </li>
+    </ul>
+  </div>
+</div>

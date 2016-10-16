@@ -202,7 +202,7 @@ function hidePreloader() {
     }
 }
 
-function changeVolume(volume) {
+SECTOR.changeVolume = function (volume) {
   $("#jplayer").jPlayer("option", "volume", window.currentVolume);
 }
 

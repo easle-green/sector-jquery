@@ -6,6 +6,7 @@ build
 
 bower_components
 node_modules
+assets/scripts/vendor/jquery/dist/
 
 old
 php

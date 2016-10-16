@@ -93,7 +93,7 @@ function slider() {
 		fill: $('#volume .equalizer__container-bg'),
 		callback: function(volume) {
 			window.currentVolume = volume / 100;
-			changeVolume(volume);
+			SECTOR.changeVolume(volume);
 		}
 	})
 }

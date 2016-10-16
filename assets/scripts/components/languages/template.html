@@ -1,0 +1,9 @@
+<ul class="lang col-md-24 list-inline text-right">
+  <li ng-repeat="lang in languages">
+    <a class="lang__icon"
+       href="javascript:;"
+       ng-class="{'active' : lang === language}"
+       ng-click="changeLanguage(lang)"
+    >{{lang}}</a>
+  </li>
+</ul>

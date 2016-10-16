@@ -10,9 +10,10 @@ const NODE_ENV = process.env.NODE_ENV || 'development',
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	// eslintpath = path.join(__dirname, '.eslintrc'),
-	PreloadPlugin = require('./webpack.html.preloader')
+	PreloadPlugin = require('./webpack.html.preloader'),
+	$ = require("jquery")
 	//PathRewriterPlugin = require('webpack-path-rewriter'),
-	//CopyWebpackPlugin = require('copy-webpack-plugin')
+	// CopyWebpackPlugin = require('copy-webpack-plugin')
 	;
 
 // Use ProvidePlugin for resolve globals
@@ -26,8 +27,6 @@ module.exports = {
 		main: "./assets/scripts/application.js",
 		// styles: "./assets/styles/application.styl"
 	},
-
-
 
 	stylus: {
 		use: [
@@ -89,7 +88,6 @@ module.exports = {
 	devtool: "source-map",
 
 	plugins: [
-		new PreloadPlugin({options: ''}),
 		// Reference: https://github.com/ampedandwired/html-webpack-plugin
 		// Render index.html
 		new HtmlWebpackPlugin({
@@ -106,6 +104,12 @@ module.exports = {
 			template: './90/index.html',
 			inject: 'body'
 		}),
+		new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery"
+		}),
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
 		// Reference: https://github.com/webpack/extract-text-webpack-plugin
 		// Extract css files
 		// Disabled when in test mode or not in build mode
@@ -127,9 +131,7 @@ if (!is_dev) {
 				drop_console: true,
 				unsafe: true
 			}
-		}),
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.OccurenceOrderPlugin()
+		})
 		//,
 		//new PathRewriterPlugin()
 		//,
@@ -138,5 +140,9 @@ if (!is_dev) {
 		//new CopyWebpackPlugin([{
 		//	from: __dirname + '/build'
 		//}])
+	);
+} else {
+	module.exports.plugins.push(
+		new PreloadPlugin({options: ''})
 	);
 }

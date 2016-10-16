@@ -8,9 +8,9 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
- var SidebarMenuEffects = (function() {
+var SidebarMenuEffects = (function() {
 
- 	function hasParentClass( e, classname ) {
+	function hasParentClass( e, classname ) {
 		if(e === document) return false;
 		if( $(e).hasClass( classname ) ) {
 			return true;
@@ -28,7 +28,7 @@
 	function init() {
 
 		var container = document.getElementById( 'st-container' ),
-            pusher = document.getElementById( 'st-pusher'),
+			pusher = document.getElementById( 'st-pusher'),
 			buttons = Array.prototype.slice.call( document.querySelectorAll( '#menu-trigger' ) ),
 			// event type (if mobile use touch events)
 			eventtype = mobilecheck() ? 'touchstart' : 'click',

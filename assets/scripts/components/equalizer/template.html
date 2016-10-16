@@ -1,0 +1,20 @@
+<div class="equalizer">
+  <div class="colname"
+       translate="player.freq"></div>
+  <ul class="equalizer__container" id="equalizer">
+
+    <li ng-repeat="eq in equalizer"
+        class="equalizer__container-element size{{eq.level}}"
+        ng-class="{'disabled': map[$index] === 0}"
+        data-size="{{eq.level}}"
+        data-rate="{{eq.active}}">
+      <div>
+      </div>
+      <a href="javascript:void(0)">
+        <div>
+        </div>
+      </a>
+      <span>{{eq.freq}}к</span>
+    </li>
+  </ul>
+</div>

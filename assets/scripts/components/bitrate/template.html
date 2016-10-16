@@ -1,0 +1,20 @@
+<div class="player__bitrate">
+  <div class="colname"
+       translate="player.quality"></div>
+  <ul class="player__bitrate-container">
+    <li
+      ng-repeat="rate in rates"
+      class="player__bitrate-element"
+      ng-class="{'player__bitrate-active': rate === bitrate}"
+    >
+      <a class="player__bitrate-name"
+         rel="{{rate}}"
+         data-channel="progressive"
+         href="javascript: void(0)"
+         ng-click="update(rate)">
+        {{rate}} Kbps</a>
+    </li>
+  </ul>
+  <div class="colname"
+       translate="player.bitrate"></div>
+</div>
