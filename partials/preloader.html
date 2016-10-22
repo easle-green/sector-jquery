@@ -1,5 +1,7 @@
 <?php
 
+  error_reporting(0);
+
   $showLoader = false;
   if ( !$_SERVER["HTTP_REFERER"] || !strstr($_SERVER["HTTP_REFERER"], $_SERVER["HTTP_HOST"]) ):
     $showLoader = true;

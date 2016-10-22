@@ -24,6 +24,57 @@ body
     padding-top 40px
     padding-bottom 30px
 
+  &__bottom
+    &.columns
+      background-color: #000
+      padding-top 25px
+      padding-bottom 25px
+
+    .apps
+      display: block
+      font: lighter 27px $basefont
+      color: rgba(255,255,255,.3)
+      padding-right: 98px
+      background: url("../images/svg/ico_googleplay.svg") no-repeat center right
+      line-height: 64px
+      text-decoration: none
+      float: right
+      .footer &:hover
+        text-decoration none
+      span
+        color: #fff
+
+    .so
+      display inline-block
+      &__link
+        display inline-block
+        float left
+        margin 0 10px
+        size 38px 38px
+        background-repeat no-repeat
+        opacity 0.7
+        transition all 0.15s ease
+
+        &:hover
+          opacity 1
+
+        &.vk
+          background-image url("../images/svg/ico_vk.svg")
+          .tip__footer-content
+            background-image url("../images/screens/vk.png")
+        &.gl
+          background-image url("../images/svg/ico_gl.svg")
+          .tip__footer-content
+            background-image url("../images/screens/gl.png")
+        &.fb
+          background-image url("../images/svg/ico_fb.svg")
+          .tip__footer-content
+            background-image url("../images/screens/fb.png")
+        &.tg
+          background-image url("../images/svg/ico_tg.svg")
+          .tip__footer-content
+            background-image url("../images/screens/tg.png")
+
   &__cell
     padding 0 35px
     &:first-child
@@ -101,22 +152,3 @@ body
 
   .underline
     text-decoration underline
-
-.google
-  &.columns
-    background-color: #353333
-    padding-top 20px
-    padding-bottom 20px
-  & &__app
-    display: block
-    font: lighter 27px $basefont
-    color: rgba(255,255,255,.3)
-    padding-right: 98px
-    background: url("../images/svg/ico_googleplay.svg") no-repeat center right
-    line-height: 64px
-    text-decoration: none
-    float: right
-    .footer &:hover
-      text-decoration none
-    span
-      color: #fff

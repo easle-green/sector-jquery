@@ -1,0 +1,71 @@
+.tip
+
+  &__footer
+    $tooltip = selector()
+    display: inline;
+    position: relative;
+    z-index: 999;
+
+    &-item
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 700;
+      padding: 0 10px;
+      &::after
+        content: '';
+        position: absolute;
+        width: 360px;
+        height: 20px;
+        bottom: 100%;
+        left: 50%;
+        pointer-events: none;
+        transform: translateX(-50%);
+
+    &-content
+      position: absolute;
+      z-index: 9999;
+      width: 200px;
+      left: 50%;
+      margin: 0 0 17px -100px;
+      bottom: 100%;
+      font-size: 0.765em;
+      line-height: 1.4;
+      box-shadow: -5px -5px 15px rgba(48,54,61,0.2);
+      background: #2a3035;
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+      transform: scale3d(0.7,0.3,1);
+      transition: opacity 0.2s, transform 0.2s;
+      text-align center
+      padding: 145px 0 0
+      background-size cover;
+      border 2px solid #2a3035
+      &::after
+        content: '';
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: transparent;
+        border-top-color: #2a3035;
+        border-width: 10px;
+        margin-left: -10px;
+    &-text
+      background-color rgba(0,0,0,0.6)
+      padding 3px 0 2px
+      font-size 11px
+      font-family Arial
+      display block
+
+    &:hover
+      {$tooltip}-item::after
+        pointer-events: auto;
+      {$tooltip}-content
+        pointer-events: auto;
+        opacity: 1;
+        transform: translate3d(0,0,0) rotate3d(0,0,0,0);
