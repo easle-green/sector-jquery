@@ -1,0 +1,109 @@
+<div class="row row-nomargin">
+  <div class="music-description music-row col-md-12">
+    Мы с большим энтузиазмом поддерживаем малоизвестных музыкантов и творческие коллективы,
+    работающие в различных стилях электронного жанра.
+    <br />
+    Если Вы пишете свою музыку и считаете, что она достойна занять почётное место в одном из каналов
+    радио Сектор, заявите о себе и отправьте нам своё творчество!
+    <br />
+    Заполните форму ниже, прикрепите архив с музыкальными дорожками и ожидайте ответ на Ваш запрос.
+    Мы постарались сделать эту процедуру максимально простой. Творческих успехов!
+  </div>
+  <div class="music-description col-md-12">
+    <div id="bar_blank">
+      <div id="bar_color"></div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-nomargin" id="musicForm">
+
+  <div class="col-md-12 music-row">
+
+    <span class="input">
+      <input class="input__field" type="text" name="FIO" id="input_name" />
+      <label class="input__label" for="input_name">
+          <span class="input__label-content" data-text="Ф.И.О. &mdash; полностью" data-hover="Ф.И.О.">
+            <span class="input__label-text">Ф.И.О. &mdash; полностью</span>
+            <span class="input__value"></span>
+          </span>
+        </label>
+    </span>
+
+    <span class="input">
+      <input class="input__field" type="text" name="NICKNAME" id="input_nickname" />
+      <label class="input__label" for="input_nickname">
+          <span class="input__label-content" data-text="Творческий псевдоним" data-hover="Псевдоним">
+            <span class="input__label-text">Творческий псевдоним</span>
+            <span class="input__value"></span>
+          </span>
+        </label>
+    </span>
+
+    <span class="input">
+      <input class="input__field" type="text" name="COUNTRY" id="input_country" />
+      <label class="input__label" for="input_country">
+          <span class="input__label-content" data-text="Страна" data-hover="Страна">
+            <span class="input__label-text">Страна</span>
+            <span class="input__value"></span>
+          </span>
+        </label>
+    </span>
+
+    <span class="input">
+      <input class="input__field" type="text" name="EMAIL" id="input_email" />
+      <label class="input__label" for="input_email">
+          <span class="input__label-content" data-text="Ваш e-mail" data-hover="E-mail">
+            <span class="input__label-text">Ваш e-mail</span>
+            <span class="input__value"></span>
+          </span>
+        </label>
+    </span>
+
+  </div>
+
+  <div class="col-md-12">
+
+    <span class="input">
+      <input class="input__field" type="text" name="STYLES" id="input_styles" />
+      <label class="input__label" for="input_styles">
+          <span class="input__label-content" data-quick="true" data-text="Стили, в которых вы работаете (через запятую)" data-hover="Стили">
+            <span class="input__label-text">Стили, в которых вы работаете (через запятую)</span>
+            <span class="input__value"></span>
+          </span>
+        </label>
+    </span>
+
+    <span class="input spacer">&nbsp;</span>
+
+    <span class="input spacer">
+      <span class="input__text col-md-15 text-right">
+        Формат: архив с файлами FLAC или WAV (16/44.1 или 24/96).
+        Тэги должны быть заполнены.
+        Желательно приложить обложку.
+      </span>
+      <span class="col-md-9 text-right p0">
+        <input type="file" id="music__file" class="input__file">
+        <label for="music__file" class="input__submit input__progress" id="music__select">
+          <span class="input__progress-content" id="music__name">Прикрепить</span>
+          <span class="input__progress-progress">
+            <span class="input__progress-progress-inner" id="music__progress"></span>
+          </span>
+        </label>
+      </span>
+    </span>
+
+    <span class="input spacer">
+      <span class="input__text col-md-15 text-right">
+        Нажимая на кнопку "Отправить", Вы даёте своё согласие
+        на обработку Ваших данных и использование
+        прикреплённых файлов в эфире радио "Сектор".
+      </span>
+      <span class="col-md-9 text-right p0">
+        <span class="input__submit disabled" id="music__send">Отправить</span>
+      </span>
+    </span>
+
+  </div>
+
+</div>

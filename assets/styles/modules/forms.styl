@@ -1,0 +1,163 @@
+.input
+  display: block;
+  overflow: hidden;
+  margin-left: 2px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+
+  &.spacer
+    border none
+    height 57px
+    overflow visible
+
+  &,
+  &__field,
+  &__label,
+  &__value
+    height: 55px;
+    line-height: 55px;
+
+  &__field
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 72%;
+    background: transparent;
+    outline none
+    color: #fff;
+    transition: transform 0.5s;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    font-size 18px
+    &:focus
+      transform: translate3d(100%, 0, 0);
+      transition-delay: 0.06s;
+      outline none
+      + .input__label
+        transform: translate3d(450px, 0, 0);
+        pointer-events: none;
+
+  &__label
+    z-index: 10;
+    display: block;
+    width: 100%;
+    text-align: left;
+    cursor: text;
+    transform-origin: 0% 50%;
+    transition: transform 0.5s;
+    float: right;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 70.25%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    &-content
+      position: relative;
+      display: block;
+      width: 100%;
+      line-height: 50px;
+      font-size: 22px;
+      color: #fff;
+      font-weight: normal;
+
+  &__value
+    color: rgba(255,255,255,0.4)
+    font-size 18px
+    margin-left 8px
+
+  &__text
+    color rgba(255,255,255,0.7)
+    line-height 1.1
+    font-size 14px
+    display table-cell
+    vertical-align middle
+
+  &__submit
+    display inline-block
+    size 100% 50px
+    line-height 46px
+    text-align center
+    font-size 22px
+    color #fff
+    border 1px solid rgba(255,255,255,0.7)
+    background-color #383F3F
+    cursor pointer
+    margin-top -2px
+    transition color 0.2s
+    &.disabled
+      cursor default
+      color rgba(255, 255, 255, 0.5)
+    &.loading
+      background #383f3f url(../images/hourglass.gif) no-repeat 93% center
+
+  &__file
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+  &__progress
+    overflow: hidden;
+    transition: transform 0.2s;
+    position: relative;
+
+    &-content
+      transition: opacity 0.3s, transform 0.3s;
+      position: relative;
+      display: block;
+      &::before,
+      &::after
+        position: absolute;
+        right: 20px;
+        opacity: 0;
+        transition: opacity 0.3s 0.3s;
+        box-sizing: border-box;
+      &::before
+        top: 100%;
+        right: auto;
+        left: 50%;
+        transition: opacity 0.3s;
+        transform: translateX(-50%);
+        content: "Загружено";
+      &::after
+        top: 100%;
+        right: auto;
+        left: 50%;
+        transition: opacity 0.3s;
+        transform: translateX(-50%);
+        content: "-";
+    &.selected
+      .input__progress-content
+        font-size 14px
+        padding 0 14px
+        overflow hidden
+
+    &-progress
+      &-inner
+        position: absolute;
+        left: 0;
+        background: #d8e2dc;
+        top: 0;
+        width: 0;
+        height: 100%;
+
+    &-loading
+      transform: scaleY(0.3);
+      .input__progress
+        cursor default
+        &-content
+          opacity 0

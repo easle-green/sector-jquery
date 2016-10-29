@@ -7,6 +7,11 @@
       <li class="menu__list-item">
         <a href="javascript:void(0)" class="menu__list-link">Эфирная сетка</a>
       </li>
+      <?php if ( !strstr($_SERVER['REQUEST_URI'], '/90/') ): ?>
+        <li class="menu__list-item">
+          <a href="javascript:void(0)" class="menu__list-link">Музыкантам</a>
+        </li>
+      <?php endif; ?>
     </ul>
   </div>
 </div>

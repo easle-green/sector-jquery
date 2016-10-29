@@ -137,6 +137,37 @@ $(document).ready(function() {
         this.style.backgroundPosition = '50% ' + (-this.scrollTop/bgDelta) + 'px';
     };
 
+    $('#musicForm .input__field')
+        .focus(function() {
+            var label = $(this).next().find('.input__label-content');
+            label.find('.input__label-text').text( label.data('hover') );
+        })
+        .blur(function() {
+            var label = $(this).next().find('.input__label-content');
+            label.find('.input__label-text').html(
+                this.value !== '' && label.data('quick')
+                  ? label.data('hover')
+                  : label.data('text')
+            );
+            label.find('.input__value').html( this.value );
+        })
+        .change(function() {
+            if ( SECTOR.form_validator() && SECTOR.file_uploaded ) {
+                $('#music__send').removeClass('disabled');
+            } else {
+                $('#music__send').addClass('disabled');
+            }
+        });
+
+    SECTOR.form_validator = function () {
+        var form = '#musicForm',
+            fields = ['FIO', 'NICKNAME', 'COUNTRY', 'EMAIL', 'STYLES'];
+
+        return fields.reduce( function(num, field) {
+            return $(form).find('[name="' + field + '"]').val() === '' ? ++num : num
+        }, 0) === 0;
+    };
+
     hidePreloader();
 
 });
