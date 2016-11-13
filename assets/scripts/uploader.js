@@ -9,10 +9,12 @@
         loading = false,
         total, resp, request, data, fileName;
 
-    function buildFormData (fileName) {
+    function buildFormData (fileName, appendFile) {
         data = new FormData();
 
-        data.append('SelectedFile', _file.files[0]);
+		if ( appendFile ) {
+			data.append('SelectedFile', _file.files[0]);
+		}
         data.append('CHANNEL', document.querySelector('html').getAttribute('class').replace('channel-', '').replace('main', 'progressive'));
         data.append('FIO', document.getElementById('input_name').value);
         data.append('AKA', document.getElementById('input_nickname').value);
@@ -33,7 +35,7 @@
         fileName = e.target.value.split( '\\' ).pop();
         _label.innerHTML = fileName;
 
-        data = buildFormData(fileName);
+        data = buildFormData(fileName, true);
 
         loading = true;
         _submit.classList.add('input__progress-loading');
@@ -87,11 +89,16 @@
         }
 
         _send.classList.add('disabled', 'loading');
+		_send.innerText = 'Отправка...';
+		
         request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if(request.readyState == 4) {
                 _send.innerText = 'Спасибо!';
                 _send.classList.remove('loading');
+				setTimeout(function(){
+					_send.innerText = 'Отправить';
+				}, 3000);
             }
         };
 

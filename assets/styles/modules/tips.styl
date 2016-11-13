@@ -25,23 +25,22 @@
     &-content
       position: absolute;
       z-index: 9999;
-      width: 200px;
+      size 120px 120px
       left: 50%;
-      margin: 0 0 17px -100px;
+      margin: 0 0 13px -60px;
       bottom: 100%;
       font-size: 0.765em;
       line-height: 1.4;
-      box-shadow: -5px -5px 15px rgba(48,54,61,0.2);
-      background: #2a3035;
+      box-shadow: -1px -2px 16px rgba(0,0,0,0.4);
       opacity: 0;
       cursor: default;
       pointer-events: none;
       transform: scale3d(0.7,0.3,1);
       transition: opacity 0.2s, transform 0.2s;
       text-align center
-      padding: 145px 0 0
-      background-size cover;
-      border 2px solid #2a3035
+      background-size 100%
+      border 3px solid #d6d6d6
+      border-radius 50%
       &::after
         content: '';
         top: 100%;
@@ -52,7 +51,7 @@
         position: absolute;
         pointer-events: none;
         border-color: transparent;
-        border-top-color: #2a3035;
+        border-top-color: #d6d6d6;
         border-width: 10px;
         margin-left: -10px;
     &-text
