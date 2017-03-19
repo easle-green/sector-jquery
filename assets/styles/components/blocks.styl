@@ -1,12 +1,13 @@
 .tabs
-  &,
-  > .columns
+  &, > .columns
     height 575px
   > .columns
     padding-left 4%
     padding-right 4%
     &.formats
       padding-right calc(4% - 10px)
+    &.actions
+      padding 0
     &.first
       display none
 
@@ -60,19 +61,6 @@
     line-height: 18px
     font: 15px/18px Arial
     text-align: justify
-
-  &-playlist
-    background-color $blue_dark
-    color #fff
-    text-decoration none
-    transition background-color 0.15s ease 0s
-    border-radius: 8px;
-    height: 19px;
-    line-height: 19px;
-    padding: 2px 15px;
-    font-size: 13px
-    &:hover
-      background-color #6690AD
 
 .programs
   $programs = selector()
@@ -165,3 +153,22 @@
     margin: 35px 0
   &-form
     width 100%
+
+.actions
+  &-row
+    padding-left 0
+    padding-right 0
+  &-bg
+    size 100% 575px
+    overflow hidden
+    background-position top center
+    background-repeat no-repeat
+    position relative
+  &-bottom
+    absolute bottom 48px left 0
+    text-align center
+    width 100%
+  .round-link
+    font-size 11px
+    padding 2px 34px 3px
+    background-color #404646

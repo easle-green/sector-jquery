@@ -23,6 +23,8 @@
       background-color rgba(0,0,0,0.1)
       &:first-child
         width calc(25% - 20px)
+      &:last-child
+        margin-right 0
       &:hover:not(.active)
         background-color #302D2D
       &.active
@@ -44,6 +46,7 @@
         border-color: #302D2D transparent transparent transparent;
         -webkit-transform: rotate(360deg)
         transition all .15s ease 0s
+        z-index 100
     &-link
       color #fff
       &,
