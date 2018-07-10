@@ -1,18 +1,23 @@
 <div class="menu__list">
   <div class="row">
     <ul class="list-inline" id="tabs">
-      <?php if ( !strstr($_SERVER['REQUEST_URI'], '/90/') ): ?>
+      <?php $useSmall = strstr($_SERVER['REQUEST_URI'], '/90/') || strstr($_SERVER['REQUEST_URI'], '/nota/'); ?>
+      <?php
+        /*
+        $useSmall = true;
+        */
+      ?>
+      <?php if ( !$useSmall ): ?>
         <li class="menu__list-item active">
           <a href="javascript:void(0)" class="menu__list-link">Ближайшее событие</a>
         </li>
       <?php endif; ?>
-      <li class="menu__list-item">
-        <a href="javascript:void(0)" class="menu__list-link">Наше всё</a>
+      <li class="menu__list-item <?= $useSmall ? 'active' : '' ?>">
+        <a href="javascript:void(0)" class="menu__list-link">
+          <?= !$useSmall ? 'Эфирная сетка' : 'Наше всё' ?>
+        </a>
       </li>
-      <li class="menu__list-item">
-        <a href="javascript:void(0)" class="menu__list-link">Эфирная сетка</a>
-      </li>
-      <?php if ( !strstr($_SERVER['REQUEST_URI'], '/90/') ): ?>
+      <?php if ( !$useSmall ): ?>
         <li class="menu__list-item">
           <a href="javascript:void(0)" class="menu__list-link">Музыкантам</a>
         </li>

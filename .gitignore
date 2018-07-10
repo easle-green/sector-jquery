@@ -2,6 +2,7 @@
 .idea
 npm-debug.log
 list.php
+db.php
 build
 
 bower_components

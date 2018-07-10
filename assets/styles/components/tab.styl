@@ -26,14 +26,15 @@
       &:last-child
         margin-right 0
       &:hover:not(.active)
-        background-color #302D2D
+        background-color #313131
       &.active
-        background-color #302D2D
+        background-color #313131
         &, {$list}-link
           cursor default
         &:after
           opacity 1
           bottom 0
+
       &:after
         size 0 0
         opacity 0
@@ -43,10 +44,11 @@
         content " "
         border-style: solid;
         border-width: 25px 24px 0 24px;
-        border-color: #302D2D transparent transparent transparent;
+        border-color: #313131 transparent transparent transparent;
         -webkit-transform: rotate(360deg)
         transition all .15s ease 0s
         z-index 100
+
     &-link
       color #fff
       &,

@@ -1,0 +1,25 @@
+#EXTM3U
+#EXTINF:-1,SECTOR | Progressive 56
+http://89.223.45.5:8000/progressive-56
+#EXTINF:-1,SECTOR | Progressive 160
+http://89.223.45.5:8000/progressive-160
+#EXTINF:-1,SECTOR | Progressive Flac
+http://89.223.45.5:8000/progressive-flac
+#EXTINF:-1,SECTOR | Progressive mp3 channel
+http://89.223.45.5:8000/progressive
+#EXTINF:-1,SECTOR | Space 56
+http://89.223.45.5:8000/space-56
+#EXTINF:-1,SECTOR | Space 160
+http://89.223.45.5:8000/space-160
+#EXTINF:-1,SECTOR | Space FLAC
+http://89.223.45.5:8000/space-flac
+#EXTINF:-1,SECTOR | Space mp3 channel
+http://89.223.45.5:8000/space
+#EXTINF:-1,SECTOR | Next 56
+http://89.223.45.5:8000/next-56
+#EXTINF:-1,SECTOR | Next 160
+http://89.223.45.5:8000/next-160
+#EXTINF:-1,SECTOR | Next FLAC
+http://89.223.45.5:8000/next-flac
+#EXTINF:-1,SECTOR | Next mp3 channel
+http://89.223.45.5:8000/next

@@ -1,0 +1,45 @@
+.history
+  position: relative;
+  overflow auto
+  height calc(100vh - 110px)
+
+  &-delimiter,
+  &-track
+    width 85%
+
+  &-delimiter
+    height 20px
+    margin 0 auto 10px
+    position: relative;
+    font-size: 13px;
+    text-align: center;
+    overflow: hidden
+    &-text
+      position relative
+      &:after,
+      &:before
+        absolute top 10px left -140px
+        content: '';
+        display: block;
+        position: absolute;
+        width: 120px;
+        border-top: 1px solid #afb2b2;
+      &:after
+        right -140px
+        left auto
+
+  &-track
+    margin 0 auto
+    clear: both
+    > time
+      font-size: 14px;
+      font-weight: 800;
+      display: block;
+      overflow: hidden;
+      float: left;
+      margin-right: 10px;
+      line-height: 20px;
+      height: 39px;
+    &-name
+      color: #fff;
+      font-size: 14px;

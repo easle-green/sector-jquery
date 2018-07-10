@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html ng-app="sector" class="channel-nota">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="description" content="Сектор радио > канал поколения Next"/>
+    <meta name="keywords"
+          content="сектор радио, радио, сектор, онлайн, hi-fi, flac, музыка, слушать, высокое качество, музыка девяностых, музыка 90, потерянное поколение"/>
+
+    <title>СЕКТОР радио | NOTA</title>
+
+    <?php $include = isset($_SERVER["SERVER_PORT"]) ? '../' : './'; ?>
+    <?php include($include . 'partials/favicons.html'); ?>
+
+</head>
+<body>
+
+<?php include($include . 'partials/preloader.html'); ?>
+
+<div id="st-container" class="st-container st-effect-6<?=$showLoader?' preloader__body':''?>">
+
+    <div class="st-pusher" id="st-pusher">
+
+        <nav class="st-menu sidebar st-effect-6" id="menu-6">
+            <h5 class="sidebar-title">История эфира</h5>
+            <div class="history" id="history" data-simplebar>
+                <?php
+                    $channel = 'nota';
+                    @include($include . 'history.php');
+                ?>
+            </div>
+        </nav>
+
+        <div class="st-content" id="st-content">
+            <div class="st-content-inner">
+
+                <div class="container">
+                    <header class="header row">
+                        <?php
+                            $channelName = '<span>Канал</span> <span class="black">классической музыки</span>';
+                            include($include . 'partials/header.html');
+                        ?>
+                    </header>
+
+                    <div class="row">
+                        <div class="player col-md-24">
+
+                            <div class="col-md-6 col-sm-12 col-xs-12 col-lg-8 player__round-wrapper">
+
+                                <div class="col-md-16 col-sm-24 col-xs-24 col-lg-19 player__block text-center"
+                                     id="player">
+                                    <?php include($include . 'partials/player.html'); ?>
+                                </div>
+
+                                <div class="col-md-6 col-lg-4 player__volume">
+                                    <?php include($include . 'partials/volume.html'); ?>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12 player__bitrate-wrapper">
+                                <?php include($include . 'partials/bitrate.html'); ?>
+                            </div>
+                            <div class="col-md-13 col-lg-11">
+                                <?php include($include . 'partials/equalizer.html'); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content row">
+                        <div class="menu">
+                            <?php include($include . 'partials/menu.html'); ?>
+                        </div>
+
+                        <div id="tabs_content" class="tabs">
+                            <div class="formats columns active">
+                                <div class="row row-nomargin">
+                                    <?php include($include . 'partials/_nota-formats.html'); ?>
+                                    <?php include($include . 'partials/formats.html'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content row">
+                        <div class="tabs">
+                            <div class="programs columns active">
+                                <div class="row row-nomargin" id="program">
+                                    <?php include($include . 'partials/_nota-program.html'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="footer row">
+                        <?php include($include . 'partials/footer.html'); ?>
+                    </footer>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php include($include . 'partials/googol.html'); ?>
+
+</body>
+</html>

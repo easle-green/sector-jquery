@@ -23,7 +23,7 @@ function progressBar(SECTOR) {
 
             player.insertBefore(canvas, first);
             canvas.style.position = "absolute";
-            canvas.style.top = "50px";
+            canvas.style.top = "32px";
             canvas.style.left = "50%";
             canvas.style.marginLeft = "-70px";
             canvas.style.width = "300px";

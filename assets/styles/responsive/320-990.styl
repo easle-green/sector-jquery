@@ -1,0 +1,128 @@
+// 320 - 960
+@media screen and (max-width: 1030px)
+  .channel__container-element
+    margin-right: 15px
+
+@media screen and (max-width: 600px)
+  .logo
+    &__slogan
+      &-about,
+      &-describe
+        font-size 18px
+
+@media screen and (max-width: 440px)
+  .lang
+    display: none
+  .footer
+    &__first,
+    &__bordered
+      img
+        max-width 46%
+    &__bordered
+      img
+        margin-left 0
+
+
+@media screen and (max-width: 542px)
+  .player
+    &__round
+      &-wrapper
+        width: 100%
+    &__bitrate
+      &-wrapper
+        display: none
+
+
+@media screen and (max-width: 332px)
+  .footer
+    &__link
+      margin-left: 8px
+
+
+@media screen and (min-width: 320px) and (max-width: 991px)
+  .header
+    padding 35px 28px 0
+
+  .lang
+    text-align center
+    display none
+
+  .logo
+    &__sector-img
+      margin-left 0
+    &__slogan
+      width: 100%
+      padding-left: 0
+      &-about,
+      &-describe
+        text-align: center
+        font-size 20px
+
+  .container
+    .player
+      &__volume,
+      &__bitrate .colname
+        display none
+      &__bitrate
+        $name = selector()
+        &-container
+          height 154px
+          &.disabled
+            {$name}-mp3,
+            {$name}-element
+              display none
+        &-wrapper
+          text-align left
+          margin-top: 14px
+    .equalizer
+      display none
+    .tabs, .tabs > .columns
+      margin-left: 0
+      height auto
+    .formats
+      &__block
+        padding-left 0
+        padding-right 0
+      blockquote
+        margin 0 0 -10px
+    .menu
+      display none
+    .formats.columns
+      padding-left 28px
+      padding-right 28px
+
+  .channel__container-element
+    float none
+
+  .formats
+    blockquote
+      font-size 14px
+    &-descr
+      font 14px/17px Arial
+
+  .footer
+    .columns
+      margin-left: 0
+    .padded
+      padding-left: 0 !important
+      padding-right: 0 !important
+    &__first
+      height auto
+      margin-bottom 15px
+    &__cell
+      margin-bottom 35px
+      padding: 0 43px
+      &:first-child
+        padding-left 43px
+        padding-right 43px
+      &:last-child
+        padding: 0 43px
+    &__xiph,
+    &__creative
+      img
+        max-width 100%
+    .text-right
+      text-align left
+
+  .preloader__footer
+    bottom 4%

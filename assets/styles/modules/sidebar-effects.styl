@@ -148,31 +148,33 @@ body,
   transform-style: preserve-3d;
 }
 
-.st-effect-6.st-menu-open .st-pusher {
-  -webkit-transform: translate3d(340px, 0, 0) rotateY(-15deg);
-  transform: translate3d(340px, 0, 0) rotateY(-15deg);
-}
+.st-effect-6.st-menu-open
+  .player__round .play,
+  .equalizer__container-point
+  .player__bitrate-name,
+  .logo__sector-img,
+  .channel__container-element-link
+  .menu__list-item
+    cursor default
+  .st-pusher
+    -webkit-transform: translate3d(340px, 0, 0) rotateY(-15deg);
+    transform: translate3d(340px, 0, 0) rotateY(-15deg);
+  .st-effect-6.st-menu
+    visibility: visible;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    -webkit-transform: translate3d(-100%, 0, 0) rotateY(15deg);
+    transform: translate3d(-100%, 0, 0) rotateY(15deg);
 
-.st-effect-6.st-menu {
+.st-effect-6.st-menu
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
   -webkit-transform-origin: 100% 50%;
   transform-origin: 100% 50%;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-}
-
-.st-effect-6.st-menu-open .st-effect-6.st-menu {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  -webkit-transform: translate3d(-100%, 0, 0) rotateY(15deg);
-  transform: translate3d(-100%, 0, 0) rotateY(15deg);
-}
-
-.st-effect-6.st-menu::after {
-  display: none;
-}
+  &::after
+    display: none;
 
 /* Fallback example for browsers that don't support 3D transforms (and no JS fallback) */
 .no-csstransforms3d .st-pusher,

@@ -9,6 +9,10 @@
         loading = false,
         total, resp, request, data, fileName;
 
+    if ( !_submit ) {
+        return;
+    }
+
     function buildFormData (fileName, appendFile) {
         data = new FormData();
 

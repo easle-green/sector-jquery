@@ -59,4 +59,4 @@
 
   document.getElementById('play').addEventListener('click', playClicked.bind(this));
 
-}(this));
+}(window));

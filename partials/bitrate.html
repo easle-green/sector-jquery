@@ -1,0 +1,28 @@
+<div class="player__bitrate">
+    <div class="colname">Качество</div>
+    <ul class="player__bitrate-container" id="player-bitrate">
+        <li class="player__bitrate-mp3">
+            Ваша система не поддерживает высококачественный поток OGG. Вы были
+            автоматически переключены на поток MP3 с потерями.
+        </li>
+        <li class="player__bitrate-element">
+            <a class="player__bitrate-name" rel="56" data-channel="<?=$channel?>"
+               data-color="120" href="javascript: void(0)">
+                &nbsp;&nbsp;56 Kbps
+            </a>
+        </li>
+        <li class="player__bitrate-element player__bitrate-active">
+            <a class="player__bitrate-name" rel="160" data-channel="<?=$channel?>"
+               data-color="100" href="javascript: void(0)">
+                160 Kbps
+            </a>
+        </li>
+        <li class="player__bitrate-element player__bitrate default" id="flac">
+            <a class="player__bitrate-name" rel="flac" data-channel="<?=$channel?>"
+               data-color="100" href="javascript: void(0)">
+                Lossless
+            </a>
+        </li>
+    </ul>
+    <div class="colname">скорость аудиопотока</div>
+</div>
