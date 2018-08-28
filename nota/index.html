@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+<?php $channel = 'nota'; ?>
+<?php $include = isset($_SERVER["SERVER_PORT"]) ? '../' : './'; ?>
 <html ng-app="sector" class="channel-nota">
 <head>
     <meta charset="utf-8"/>
@@ -9,7 +11,6 @@
 
     <title>СЕКТОР радио | NOTA</title>
 
-    <?php $include = isset($_SERVER["SERVER_PORT"]) ? '../' : './'; ?>
     <?php include($include . 'partials/favicons.html'); ?>
 
 </head>
@@ -24,10 +25,7 @@
         <nav class="st-menu sidebar st-effect-6" id="menu-6">
             <h5 class="sidebar-title">История эфира</h5>
             <div class="history" id="history" data-simplebar>
-                <?php
-                    $channel = 'nota';
-                    @include($include . 'history.php');
-                ?>
+                <?php @include($include . 'history.php'); ?>
             </div>
         </nav>
 

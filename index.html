@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<?php $channel = 'progressive'; ?>
 <html ng-app="sector" class="channel-main">
 <head>
     <meta charset="utf-8"/>
@@ -23,10 +24,7 @@
         <nav class="st-menu sidebar st-effect-6" id="menu-6">
             <h5 class="sidebar-title">История эфира</h5>
             <div class="history" id="history" data-simplebar>
-                <?php
-                    $channel = 'progressive';
-                    @include('history.php');
-                ?>
+                <?php @include('history.php'); ?>
             </div>
         </nav>
 

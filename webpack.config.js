@@ -8,7 +8,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development',
     nib = require('nib'),
 
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin')
     // eslintpath = path.join(__dirname, '.eslintrc'),
     //PathRewriterPlugin = require('webpack-path-rewriter'),
     //CopyWebpackPlugin = require('copy-webpack-plugin')
