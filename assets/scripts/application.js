@@ -10,12 +10,13 @@ require('./vendor/sidebarEffects.js');
 require('simplebar');
 
 var SECTOR = {};
-SECTOR.api = require('./components/api')();
+SECTOR.api = require('./components/api')(); // = import
 
 var progress = require('./components/progressBar')(SECTOR);
 var status = require('./components/updateStatus')(SECTOR);
 var program = require('./components/updateProgram')(SECTOR);
 var slider = require('./components/volumeSlider');
+var langSwitcher = require('./components/langSwitcher')(SECTOR);
 
 require('./common.js');
 require('./uploader.js');
@@ -26,5 +27,6 @@ require('simplebar/dist/simplebar.css');
 SECTOR.api.init();
 program.init();
 status.init();
+langSwitcher.init();
 progress.init();
 slider();

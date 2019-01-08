@@ -62,6 +62,10 @@ module.exports = {
                 loader: 'style!css'
             },
             {
+                test: /\.json$/,
+                loader: 'json'
+            },
+            {
                 test: /.(png|jpg|jpeg|gif|svg)$/,
                 //loader: 'url?name=[name]-[hash].[ext]&limit=4000'
                 loader: 'file?name=[path][name]-[hash].[ext]'
