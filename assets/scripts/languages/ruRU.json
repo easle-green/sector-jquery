@@ -1,15 +1,7 @@
 {
   "logo": "/assets/images/svg/sector-2016.svg",
 
-  "head": {
-    "hifi": "Hi-Fi",
-    "radiostation": "радиостанция в форматах",
-    "formats": {
-      "ogg": "OGG Vorbis",
-      "and": "и",
-      "flac": "FLAC"
-    }
-  },
+  "head": "<span>Hi-Fi</span> радиостанция в форматах <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">и</span> <span class=\"black\">FLAC</span>",
 
   "player": {
     "history": "История эфира",
@@ -20,29 +12,10 @@
   },
 
   "menu": {
-    "progressive": [
-      {
-        "title": "Ближайшее событие",
-        "content": {
-          "type": "bg",
-          "image": "/assets/actions/progressive-air.jpg",
-          "url": "https://vk.com/sectorradio",
-          "link": "Подробнее"
-        }
-      },
-      {
-        "title": "Эфирная сетка",
-        "content": {
-          "type": "program"
-        }
-      },
-      {
-        "title": "Музыкантам",
-        "content": {
-          "type": "form"
-        }
-      }
-    ]
+    "event": "Ближайшее событие",
+    "description": "Подробнее",
+    "program": "Эфирная сетка",
+    "musician": "Музыкантам"
   },
 
   "container": {
