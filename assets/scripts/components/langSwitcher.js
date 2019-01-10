@@ -13,27 +13,26 @@ function switcher(SECTOR) {
         byId: 'lang-switcher',
         currentLanguage: 'ru-RU',
         defaultLanguage: 'ru-RU',
-        browserLanguage: '',
+        browserLanguage: 'ru-RU',
 
         init: function () {
-            this.languageDeterminater();
+            this.browserLanguageIdentifier();
             this.languageProcessor();
             this.onClick = this.onClick.bind(this);
             this.languageSwitcher();
         },
 
-        languageDeterminater: function () {
-            debugger;
+        browserLanguageIdentifier: function () {
             this.browserLanguage = window.navigator.language;
-            if (this.browserLanguage !== null) {
+
+            if (this.browserLanguage !== null && this.browserLanguage !== undefined) {
                 this.currentLanguage = this.browserLanguage;
-                const elem = document.querySelector(`[data-id='${this.browserLanguage}']`);
-                elem.className += ' active';
+                const domElement = document.querySelector(`[data-id='${this.browserLanguage}']`);
+                domElement.className += ' active';
             }
         },
 
         languageProcessor() {
-
             let foundProperty = localizedProperty[this.currentLanguage];
 
             if (foundProperty === null) {
@@ -42,9 +41,9 @@ function switcher(SECTOR) {
             }
 
             for (let translation in foundProperty) {
-                const elem = document.querySelector(`[data-lang='${translation}']`);
-                if (elem !== null) {
-                    elem.innerHTML = foundProperty[translation];
+                const domElement = document.querySelector(`[data-lang='${translation}']`);
+                if (domElement !== null) {
+                    domElement.innerHTML = foundProperty[translation];
                 }
             }
         },
@@ -57,13 +56,14 @@ function switcher(SECTOR) {
             if (event.target.classList.contains('active')) {
                 return;
             }
+
             if (event.target.tagName.toLocaleLowerCase() === 'a') {
                 this.currentLanguage = event.target.getAttribute('data-id');
 
-                let lis = document.querySelectorAll('#lang-switcher li a');
+                let listWithLiTags = document.querySelectorAll('#lang-switcher li a');
 
-                for (let i = 0; i < lis.length; i++) {
-                    lis[i].className = 'lang__icon';
+                for (let i = 0; i < listWithLiTags.length; i++) {
+                    listWithLiTags[i].className = 'lang__icon';
                 }
                 event.target.className += ' active';
                 this.languageProcessor()
