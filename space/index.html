@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <?php $channel = 'space'; ?>
 <?php $include = isset($_SERVER["SERVER_PORT"]) ? '../' : './'; ?>
-<html ng-app="sector" class="channel-space">
+<html class="channel-space">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
@@ -34,10 +34,7 @@
 
                 <div class="container">
                     <header class="header row">
-                        <?php
-                            $channelName = '<span>Канал <span class="black">традиционной электронной</span> музыки</span>';
-                            include($include . 'partials/header.html');
-                        ?>
+                        <?php include($include . 'partials/header.html'); ?>
                     </header>
 
                     <div class="row">
