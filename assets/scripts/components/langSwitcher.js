@@ -49,11 +49,18 @@ function switcher() {
             const foundProperty = localizedProperty[this.currentLanguage];
 
             for (let translation in foundProperty) {
+                if (translation === "logo") {
+                    let images = document.querySelectorAll(`[data-lang='${translation}']`);
+                    for (let i = 0; i < images.length; i++) {
+                        images[i].src = foundProperty[translation];
+                    }
+                }
                 const domElement = document.querySelector(`[data-lang='${translation}']`);
                 if (domElement !== null) {
                     domElement.innerHTML = foundProperty[translation];
                 }
             }
+
         },
 
         languageSwitcher() {

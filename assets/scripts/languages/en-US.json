@@ -1,11 +1,19 @@
 {
   "logo": "/assets/images/svg/logo-eng.svg",
-  "head": "<span>Hi-Fi</span> radiostation with formats like <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">and</span> <span class=\"black\">FLAC</span>",
+  "head": "<span>Hi-Fi</span> radio station with formats like <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">and</span> <span class=\"black\">FLAC</span>",
   "player-history": "Listening history",
   "player-volume": "Volume",
   "player-quality": "Quality",
   "player-stream": "stream speed",
   "player-frequency": "Frequency interval",
+
+  "preparing1": "Preparing before we go ...",
+  "preparing2": "&copy; 2012-2019 Sector broadcasting &mdash; bla bla bla  bla сайт",
+
+  "menu-event": "Closest event",
+  "menu-description": "More",
+  "menu-program": "Schedule",
+  "menu-musician": "To musicians",
 
   "container-about-name": "What do we listen",
   "container-about-quote": "SECTOR 0000000 буквально, 0000000 и 000&shy;ностью вби&shy;рает в себя 0000 поня&shy;тие электрон&shy;ной музыки.",
@@ -31,6 +39,10 @@
   "footer-n2-foobar": "Foobar2000 на 00000 день является самым пере&shy;00000 и при этом бес&shy;платным 00000000&shy;00000&shy;00000 для IBM-сов&shy;местимых плат&shy;форм, под управ&shy;лением ОС семей&shy;ства Microsoft ©Windows и Linux. Неко&shy;торые из основ&shy;ных особен&shy;ностей плеера вклю&shy;чают в себя пол&shy;ную под&shy;держку коди&shy;ровки Unicode, под&shy;держку техно&shy;логии норма&shy;лизации звука ReplayGain, а также встроен&shy;ную под&shy;держку ряда как попу&shy;лярных, так и ред&shy;ких звуко&shy;вых фор&shy;матов. Проигры&shy;ватель также имеет широ&shy;кую воз&shy;можность програм&shy;много рас&shy;ширения.<br>Подробности:",
   "footer-n2-dolby": "На всех кана&shy;лах нашей 00000&shy;станции звучат также уни&shy;00000 за&shy;писи объём&shy;ного зву&shy;00000, соз&shy;данные по техно&shy;логии ком&shy;пании Dolby Lab™, а также сторон&shy;ними производи&shy;телями имити&shy;рующих сред. Такие записи имеют соотв. марки&shy;ровку 3D-sound и Dolby surround. При прослу&shy;шивании радио «Сектор», в наз&shy;ваниях до&shy;рожек, вы увидите соответ&shy;ствующую по&shy;метку. Прослу&shy;шивание таких доро&shy;жек гаранти&shy;рует эффект пол&shy;ного погру&shy;жения в иное зву&shy;ковое простран&shy;ство. Логотип Dolby surround явля&shy;ется зареги&shy;стри&shy;рован&shy;ным товар&shy;ным знаком.",
 
-  "footer-n3-standart": "Сайт «Сектор радио» свёрстан в 00000 стандарте HTML5, с 00000 00000 вещания в окне 00000000. Для качественного отображения содержимого и работы всех компонентов страницы рекомендуем «Яндекс.Браузер»"
+  "footer-n3-standart": "Сайт «Сектор радио» свёрстан в 00000 стандарте HTML5, с 00000 00000 вещания в окне 00000000. Для качественного отображения содержимого и работы всех компонентов страницы рекомендуем «Яндекс.Браузер»",
 
+  "distribution1": "0000000 &mdash; масса 0000000, 0000000 и 0000000 материала; звучит музыка к 0000000 фильмам.<br/>Ночью &mdash; полное погружение в обстановку космической станции.</div>",
+  "distribution2": "Днём и ночью &mdash; отборнейшая музыка 0000000 электронных направлений.<br/> Авторские передачи 0000000 0000000, множество редкого материала в аудиофильском качестве.",
+  "distribution3": "Время 0000000 стало одним из переломных в 0000000 индустрии, давшее миру новое звучание синтезаторов, новые жанры и новые ритмы.<br/>В эфире &mdash; отечестванная музыка и Западные хиты.",
+  "distribution4": "0000000 вечна сама по себе. Однако она имеет 0000000 в виде 0000000 академизма.<br/> На канале &mdash; только лучшие 0000000 в виртуозном исполнении от лучших дирижёров и коллективов."
 }

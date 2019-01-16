@@ -9,17 +9,15 @@
       ?>
       <?php if ( !$useSmall ): ?>
         <li class="menu__list-item active">
-          <a href="javascript:void(0)" class="menu__list-link">Ближайшее событие</a>
+          <a href="javascript:void(0)" class="menu__list-link" data-lang="menu-event"></a>
         </li>
       <?php endif; ?>
       <li class="menu__list-item <?= $useSmall ? 'active' : '' ?>">
-        <a href="javascript:void(0)" class="menu__list-link">
-          <?= !$useSmall ? 'Эфирная сетка' : 'Наше всё' ?>
-        </a>
+        <a href="javascript:void(0)" class="menu__list-link" data-lang="menu-program"></a>
       </li>
       <?php if ( !$useSmall ): ?>
         <li class="menu__list-item">
-          <a href="javascript:void(0)" class="menu__list-link">Музыкантам</a>
+          <a href="javascript:void(0)" class="menu__list-link" data-lang="menu-musician"></a>
         </li>
       <?php endif; ?>
     </ul>
