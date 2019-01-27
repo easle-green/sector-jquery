@@ -1,5 +1,5 @@
 {
-  "logo": "/assets/images/svg/logo-eng.svg",
+  "img_logo": "/assets/images/svg/logo-eng.svg",
   "head": "<span>Hi-Fi</span> radio station with formats like <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">and</span> <span class=\"black\">FLAC</span>",
   "player-history": "Listening history",
   "player-volume": "Volume",
@@ -14,6 +14,19 @@
   "menu-description": "More",
   "menu-program": "Schedule",
   "menu-musician": "To musicians",
+
+  "reused_progressive_mns": "progressive, music non stop",
+  "reused_soundtrack_mns": "soundtrack, music non stop",
+  "reused_night_sector": "night sector",
+  "reused_mns": "music non stop",
+
+  "monday": "Mo",
+  "tuesday": "Tu",
+  "wednesday": "We",
+  "thursday": "Th",
+  "friday": "Fr",
+  "saturday": "Sa",
+  "sunday": "Su",
 
   "container-about-name": "What do we listen",
   "container-about-quote": "SECTOR 0000000 буквально, 0000000 и 000&shy;ностью вби&shy;рает в себя 0000 поня&shy;тие электрон&shy;ной музыки.",

@@ -49,12 +49,21 @@ function switcher() {
             const foundProperty = localizedProperty[this.currentLanguage];
 
             for (let translation in foundProperty) {
-                if (translation === "logo") {
+                if (translation.indexOf("img") !== -1) {
                     let images = document.querySelectorAll(`[data-lang='${translation}']`);
                     for (let i = 0; i < images.length; i++) {
                         images[i].src = foundProperty[translation];
                     }
                 }
+
+                if (translation.indexOf("reused") !== -1){
+                    let elements = document.querySelectorAll(`[data-lang='${translation}']`);
+                    for (let j = 0; j < elements.length; j++){
+                        elements[j].innerHTML = foundProperty[translation];
+                    }
+
+                }
+
                 const domElement = document.querySelector(`[data-lang='${translation}']`);
                 if (domElement !== null) {
                     domElement.innerHTML = foundProperty[translation];

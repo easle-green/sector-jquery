@@ -1,5 +1,5 @@
 {
-  "logo": "/assets/images/svg/sector-2016.svg",
+  "img_logo": "/assets/images/svg/sector-2016.svg",
   "head": "<span>Hi-Fi</span> радиостанция в форматах <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">и</span> <span class=\"black\">FLAC</span>",
 
   "player-history": "История эфира",
@@ -12,6 +12,19 @@
   "menu-description": "Подробнее",
   "menu-program": "Эфирная сетка",
   "menu-musician": "Музыкантам",
+
+  "reused_progressive_mns": "прогрессивная, музыка без остановки",
+  "reused_soundtrack_mns": "трэк, музыка без остановки",
+  "reused_night_sector": "ночной сектор",
+  "reused_mns": "музыка без остановки",
+
+  "monday": "Пн",
+  "tuesday": "Вт",
+  "wednesday": "Ср",
+  "thursday": "Чт",
+  "friday": "Пт",
+  "saturday": "Сб",
+  "sunday": "Вс",
 
   "preparing1": "Предстартовая подготовка ...",
   "preparing2": "&copy; 2012-2019 Sector broadcasting &mdash; некоммерческая организация. Публичный сайт. Все права сохранены.",
