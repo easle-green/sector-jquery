@@ -1,5 +1,5 @@
 'use strict';
-const localizedProperty = {
+var localizedProperty = {
     'ru-RU': require('../languages/ru-RU.json'),
     'en-US': require('../languages/en-US.json')
 };
@@ -36,35 +36,35 @@ function switcher() {
 
             this.currentLanguage = this.browserLanguage;
             document
-                .querySelector(`[data-id='${this.browserLanguage}']`)
+                .querySelector('[data-id="' + this.browserLanguage + '"]')
                 .className += ' active';
 
         },
 
-        languageProcessor() {
+        languageProcessor: function() {
             if (localizedProperty[this.currentLanguage] === null) {
                 this.currentLanguage = this.defaultLanguage;
             }
 
-            const foundProperty = localizedProperty[this.currentLanguage];
+            var foundProperty = localizedProperty[this.currentLanguage];
 
-            for (let translation in foundProperty) {
+            for (var translation in foundProperty) {
+                var query = document.querySelectorAll('[data-lang="' + translation +'"]');
+
                 if (translation.indexOf("img") !== -1) {
-                    let images = document.querySelectorAll(`[data-lang='${translation}']`);
-                    for (let i = 0; i < images.length; i++) {
-                        images[i].src = foundProperty[translation];
+                    for (var i = 0; i < query.length; i++) {
+                        query[i].src = foundProperty[translation];
                     }
                 }
 
                 if (translation.indexOf("reused") !== -1){
-                    let elements = document.querySelectorAll(`[data-lang='${translation}']`);
-                    for (let j = 0; j < elements.length; j++){
-                        elements[j].innerHTML = foundProperty[translation];
+                    for (var j = 0; j < query.length; j++){
+                        query[j].innerHTML = foundProperty[translation];
                     }
 
                 }
 
-                const domElement = document.querySelector(`[data-lang='${translation}']`);
+                var domElement = document.querySelector('[data-lang="' + translation +'"]');
                 if (domElement !== null) {
                     domElement.innerHTML = foundProperty[translation];
                 }
@@ -72,11 +72,11 @@ function switcher() {
 
         },
 
-        languageSwitcher() {
+        languageSwitcher: function() {
             document.getElementById(this.byId).addEventListener("click", this.onClick);
         },
 
-        onClick(event) {
+        onClick: function(event) {
             if (event.target.classList.contains('active')) {
                 return;
             }
@@ -84,7 +84,7 @@ function switcher() {
             if (event.target.tagName.toLocaleLowerCase() === 'a') {
                 this.currentLanguage = event.target.getAttribute('data-id');
 
-                const activeSelector = document.querySelector('#lang-switcher .active');
+                var activeSelector = document.querySelector('#lang-switcher .active');
 
                 activeSelector.className = activeSelector.className.replace(' active', '');
                 event.target.className += ' active';
