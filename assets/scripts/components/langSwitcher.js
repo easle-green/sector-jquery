@@ -23,23 +23,27 @@ function switcher() {
             this.languageSwitcher();
         },
 
-        browserLanguageIdentifier: function () {
-            this.browserLanguage = window.navigator.language;
+        browserLanguageChecker() {
+            return this.browserLanguage === null || this.browserLanguage === undefined;
+        },
 
-            if (this.browserLanguage === null || this.browserLanguage === undefined) {
-                this.browserLanguage = navigator.userLanguage;
+        browserLanguageIdentifier: function () {
+            this.browserLanguage = window.navigator.language; // if chrome firefox ...
+
+            if (browserLanguageChecker()) {
+                this.browserLanguage = navigator.userLanguage; //  if explorer
             }
 
-            if (this.browserLanguage === null || this.browserLanguage === undefined) {
-                this.browserLanguage = this.defaultLanguage;
+            if (browserLanguageChecker()) {
+                this.browserLanguage = this.defaultLanguage; // if all functions is not supported
             }
 
             this.currentLanguage = this.browserLanguage;
             document
                 .querySelector(`[data-id='${this.browserLanguage}']`)
                 .className += ' active';
-
         },
+
 
         languageProcessor() {
             if (localizedProperty[this.currentLanguage] === null) {
@@ -56,9 +60,9 @@ function switcher() {
                     }
                 }
 
-                if (translation.indexOf("reused") !== -1){
+                if (translation.indexOf("reused") !== -1) {
                     let elements = document.querySelectorAll(`[data-lang='${translation}']`);
-                    for (let j = 0; j < elements.length; j++){
+                    for (let j = 0; j < elements.length; j++) {
                         elements[j].innerHTML = foundProperty[translation];
                     }
 
