@@ -6,11 +6,9 @@
   "repository": "",
   "license": "MIT",
   "scripts": {
-    "test": "NODE_ENV=test karma start",
-    "postinstall": "",
-    "prestart": "",
     "start": "webpack-dev-server --progress --colors --hot",
-    "build": "rm -rf build && webpack -p"
+    "build": "rm -rf build && webpack --config ./webpack.prod.js --progress --profile --colors",
+    "build-node": "NODE_ENV=production rm -rf build && webpack --config ./webpack.prod.js --progress --profile --colors"
   },
   "dependencies": {
     "simplebar": "2.6.1"
