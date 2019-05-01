@@ -1,6 +1,7 @@
 {
   "img_logo": "/assets/images/svg/sector-2016.svg",
   "head": "<span>Hi-Fi</span> радиостанция в форматах <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">и</span> <span class=\"black\">FLAC</span>",
+  "title": "СЕКТОР радио",
 
   "player-history": "История эфира",
   "player-volume": "Громкость",

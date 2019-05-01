@@ -1,4 +1,5 @@
 window.SECTOR = window.SECTOR || {};
+SECTOR.startTime = Date.now();
 
 $(document).ready(function() {
 
@@ -20,7 +21,10 @@ $(document).ready(function() {
 
     var bitrateContainer = document.getElementById('player-bitrate');
 
-    SECTOR.currentVolume = localStorage.getItem('volume') || .75;
+    SECTOR.currentVolume = localStorage.getItem('volume');
+    if ( !SECTOR.currentVolume || SECTOR.currentVolume === 'NaN' ) {
+        SECTOR.currentVolume = .75;
+    }
     SECTOR.updatePositionByVolume(SECTOR.currentVolume);
 
     if (!checkForOGG()) {
@@ -177,8 +181,6 @@ $(document).ready(function() {
         }, 0) === 0;
     };
 
-    hidePreloader();
-
 });
 
 function animateBitrate(curr, rate, dir) {
@@ -240,13 +242,21 @@ function initPlayer(channel, ices) {
     SECTOR.changeVolume(SECTOR.currentVolume);
 }
 
-function hidePreloader() {
-    if ( !/preloader-ready/.test(document.body.className) ) {
-        setTimeout(function(){
-            document.body.className += ' preloader-ready';
-        }, 3500);
+SECTOR.hidePreloader = function() {
+    if ( /preloader-ready/.test(document.body.className) ) {
+        return;
     }
-}
+
+    var upTime = Date.now() - SECTOR.startTime;
+    var hideAfter = 0;
+    if ( upTime / 1000 < 3 ) {
+        hideAfter = 3500 - upTime;
+    }
+
+    setTimeout(function(){
+        document.body.className += ' preloader-ready';
+    }, hideAfter);
+};
 
 SECTOR.changeVolume = function(volume) {
   $("#jplayer").jPlayer("option", "volume", volume);

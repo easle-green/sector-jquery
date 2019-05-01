@@ -1,6 +1,8 @@
 {
-  "img_logo": "/assets/images/svg/logo-eng.svg",
+  "img_logo": "/assets/images/svg/sector_logo-eng.svg",
   "head": "<span>Hi-Fi</span> radio station with formats like <span class=\"black\">OGG Vorbis</span> <span class=\"lowercase\">and</span> <span class=\"black\">FLAC</span>",
+  "title": "SECTOR radio",
+
   "player-history": "Listening history",
   "player-volume": "Volume",
   "player-quality": "Quality",

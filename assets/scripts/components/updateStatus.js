@@ -33,8 +33,8 @@ function status (SECTOR) {
         },
 
         insertHistory: function() {
-            const history = document.querySelector(this.byHistory);
-            const el = document.createElement('div');
+            var history = document.querySelector(this.byHistory);
+            var el = document.createElement('div');
             el.innerHTML =
                 '<time>' + SECTOR.api.trackInfo.serverTime + '</time>' +
                 '<div class="history-track-name"><strong>' + this.currentArtist + '</strong> — ' + this.currentTitle + '</div>';

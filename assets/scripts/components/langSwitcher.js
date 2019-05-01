@@ -1,9 +1,4 @@
 'use strict';
-var localizedProperty = {
-    'ru-RU': require('../languages/ru-RU.json'),
-    'en-US': require('../languages/en-US.json')
-};
-
 
 function switcher() {
 
@@ -12,41 +7,55 @@ function switcher() {
         byId: 'lang-switcher',
         currentLanguage: 'ru-RU',
         defaultLanguage: 'ru-RU',
-        browserLanguage: 'ru-RU',
         listWithLiTags: document.querySelectorAll('#lang-switcher a'),
+        localizedProperty: {},
 
-        init: function () {
+        init: function (localizedProperty) {
             this.onClick = this.onClick.bind(this);
+            this.langMatcher = this.langMatcher.bind(this);
+            this.localizedProperty = localizedProperty;
 
             this.browserLanguageIdentifier();
+            this.setActiveLanguage();
             this.languageProcessor();
             this.languageSwitcher();
         },
 
         browserLanguageIdentifier: function () {
-            this.browserLanguage = window.navigator.language;
+            this.currentLanguage =
+                localStorage.getItem('language') || navigator.language ||
+                navigator.userLanguage || navigator.systemLanguage || this.defaultLanguage;
 
-            if (this.browserLanguage === null || this.browserLanguage === undefined) {
-                this.browserLanguage = navigator.userLanguage;
+            // language can be "ru" or "en", not "ru-RU"!
+            if ( typeof this.localizedProperty[this.currentLanguage] !== 'undefined' ) {
+                return;
             }
 
-            if (this.browserLanguage === null || this.browserLanguage === undefined) {
-                this.browserLanguage = this.defaultLanguage;
+            this.currentLanguage = this.defaultLanguage;
+            var firstMatch = Object.keys(this.localizedProperty).reduce(this.langMatcher, false);
+            if( firstMatch.length ) {
+                this.currentLanguage = firstMatch[0];
             }
+        },
 
-            this.currentLanguage = this.browserLanguage;
-            document
-                .querySelector('[data-id="' + this.browserLanguage + '"]')
-                .className += ' active';
+        setActiveLanguage: function() {
+            var selector = document.querySelector('[data-id="' + this.currentLanguage + '"]');
 
+            if ( selector !== null ) {
+                selector.className += ' active';
+            }
+        },
+
+        langMatcher: function(prev, next) {
+            return prev || next.match(this.currentLanguage);
         },
 
         languageProcessor: function() {
-            if (localizedProperty[this.currentLanguage] === null) {
+            if (this.localizedProperty[this.currentLanguage] === null) {
                 this.currentLanguage = this.defaultLanguage;
             }
 
-            var foundProperty = localizedProperty[this.currentLanguage];
+            var foundProperty = this.localizedProperty[this.currentLanguage];
 
             for (var translation in foundProperty) {
                 var query = document.querySelectorAll('[data-lang="' + translation +'"]');
@@ -89,9 +98,12 @@ function switcher() {
                 activeSelector.className = activeSelector.className.replace(' active', '');
                 event.target.className += ' active';
 
+                // save current selection
+                localStorage.setItem('language', this.currentLanguage);
+
                 this.languageProcessor();
             }
-        },
+        }
     }
 }
 
