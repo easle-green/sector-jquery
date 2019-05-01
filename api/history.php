@@ -39,6 +39,7 @@
                                   "artist" => $row->artist,
                                   "title" => $row->title,
                                   "time" => date('H:i', $row->timestamp),
+								  "time_full" => date('D, d M Y H:i:s', $row->timestamp),
 								  "timestamp" => $row->timestamp,
 								  "channel" => $row->channel
                                   );
