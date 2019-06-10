@@ -8,7 +8,7 @@
 
   $channel = $_GET['channel'];
 
-  $permitted = ['progressive', 'space', 'next', 'nota'];
+  $permitted = ['progressive', 'space', 'next', 'nota', 'geny'];
 
   if ( !in_array($channel, $permitted ) ) {
     $channel = $permitted[0];

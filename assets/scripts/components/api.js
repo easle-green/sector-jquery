@@ -4,7 +4,7 @@ function api() {
     var EventEmitter = require('wolfy87-eventemitter');
 
     return {
-        apiPoint: 'http://sectorradio.ru/api/track.php',
+        apiPoint: '//sectorradio.ru/api/track.php',
         trackId: 'track-loader',
         channel: 'progressive',
         trackInfo: {},

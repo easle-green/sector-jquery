@@ -1,0 +1,31 @@
+<IfModule mod_mime.c>
+  AddType application/x-httpd-php .html
+</IfModule>
+
+RemoveHandler .svg
+AddType image/svg+xml .svg
+
+Redirect 301 "/progressive-56" http://getradio.ml/progressive-56
+Redirect 301 "/progressive-160" http://getradio.ml/progressive-160
+Redirect 301 "/progressive-flac" http://getradio.ml/progressive-flac
+Redirect 301 "/progressive-mp3" http://getradio.ml/progressive-mp3
+
+Redirect 301 "/space-56" http://getradio.ml/space-56
+Redirect 301 "/space-160" http://getradio.ml/space-160
+Redirect 301 "/space-flac" http://getradio.ml/space-flac
+Redirect 301 "/space-mp3" http://getradio.ml/space-mp3
+
+Redirect 301 "/next-56" http://getradio.ml/next-56
+Redirect 301 "/next-160" http://getradio.ml/next-160
+Redirect 301 "/next-flac" http://getradio.ml/next-flac
+Redirect 301 "/next-mp3" http://getradio.ml/next-mp3
+
+Redirect 301 "/nota-56" http://getradio.ml/nota-56
+Redirect 301 "/nota-160" http://getradio.ml/nota-160
+Redirect 301 "/nota-flac" http://getradio.ml/nota-flac
+Redirect 301 "/nota-mp3" http://getradio.ml/nota-mp3
+
+Redirect 301 "/geny-56" http://getradio.ml/geny-56
+Redirect 301 "/geny-160" http://getradio.ml/geny-160
+Redirect 301 "/geny-flac" http://getradio.ml/geny-flac
+Redirect 301 "/geny-mp3" http://getradio.ml/geny-mp3
